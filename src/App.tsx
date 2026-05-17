@@ -1,5 +1,5 @@
 import { Resource } from "ra-core";
-import { UsersIcon, AppleIcon } from "lucide-react";
+import { UsersIcon, AppleIcon, UtensilsCrossedIcon } from "lucide-react";
 import localStorageDataProvider from "ra-data-local-storage";
 import { Admin } from "@/components/admin";
 import { UserList, UserShow, UserEdit, UserCreate } from "@/resources/users";
@@ -9,6 +9,12 @@ import {
     AlimentEdit,
     AlimentCreate,
 } from "@/resources/aliments";
+import {
+    RecipeList,
+    RecipeShow,
+    RecipeEdit,
+    RecipeCreate,
+} from "@/resources/recipes";
 
 const dataProvider = localStorageDataProvider();
 
@@ -29,6 +35,14 @@ const App = () => (
             show={AlimentShow}
             edit={AlimentEdit}
             create={AlimentCreate}
+        />
+        <Resource
+            name="recipes"
+            icon={UtensilsCrossedIcon}
+            list={RecipeList}
+            show={RecipeShow}
+            edit={RecipeEdit}
+            create={RecipeCreate}
         />
     </Admin>
 );
