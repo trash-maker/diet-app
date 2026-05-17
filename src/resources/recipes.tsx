@@ -1,6 +1,6 @@
 import React, { useMemo, useRef, useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
-import { FieldTitle, useGetList, useInput, useRecordContext } from "ra-core";
+import { FieldTitle, useGetList, useInput, useRecordContext, useResourceContext } from "ra-core";
 import type { InputProps } from "ra-core";
 import { Plus, X } from "lucide-react";
 import { useTheme } from "next-themes";
@@ -34,6 +34,29 @@ import {
     CommandList,
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
+import { Checkbox } from "@/components/ui/checkbox";
+
+// ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+const DAYS = [
+    { id: "mon", name: "Lunedì" },
+    { id: "tue", name: "Martedì" },
+    { id: "wed", name: "Mercoledì" },
+    { id: "thu", name: "Giovedì" },
+    { id: "fri", name: "Venerdì" },
+    { id: "sat", name: "Sabato" },
+    { id: "sun", name: "Domenica" },
+] as const;
+
+const MEALS = [
+    { id: "breakfast",        name: "Colazione" },
+    { id: "morning_snack",   name: "Spuntino mattina" },
+    { id: "lunch",            name: "Pranzo" },
+    { id: "afternoon_snack", name: "Merenda" },
+    { id: "dinner",           name: "Cena" },
+] as const;
 
 type Ingredient = { name: string; quantity: string; unit: string };
 
@@ -48,6 +71,88 @@ const UNITS = [
     { value: "tazza",      label: "tazza" },
     { value: "q.b.",       label: "q.b." },
 ];
+
+// ---------------------------------------------------------------------------
+// ScheduleInput — griglia giorno × pasto
+// ---------------------------------------------------------------------------
+
+type Schedule = Record<string, string[]>;
+
+const ScheduleInput = ({
+    source = "schedule",
+    label,
+    helperText,
+}: {
+    source?: string;
+    label?: string | false;
+    helperText?: string;
+}) => {
+    const { id, field, isRequired } = useInput({ source, defaultValue: {} });
+    const resource = useResourceContext();
+    const schedule: Schedule = field.value ?? {};
+
+    const isChecked = (dayId: string, mealId: string) =>
+        (schedule[dayId] ?? []).includes(mealId);
+
+    const toggle = (dayId: string, mealId: string) => {
+        const dayMeals: string[] = schedule[dayId] ?? [];
+        const newDayMeals = dayMeals.includes(mealId)
+            ? dayMeals.filter((m) => m !== mealId)
+            : [...dayMeals, mealId];
+
+        const newSchedule = { ...schedule };
+        if (newDayMeals.length === 0) {
+            delete newSchedule[dayId];
+        } else {
+            newSchedule[dayId] = newDayMeals;
+        }
+        field.onChange(newSchedule);
+    };
+
+    return (
+        <FormField id={id} name={field.name}>
+            {label !== false && (
+                <FormLabel>
+                    <FieldTitle label={label} source={source} resource={resource} isRequired={isRequired} />
+                </FormLabel>
+            )}
+            <FormControl>
+                <div className="overflow-x-auto rounded-md border">
+                    <table className="w-full text-sm border-collapse">
+                        <thead>
+                            <tr className="border-b">
+                                <th className="py-2 pl-3 pr-4 text-left font-normal text-muted-foreground w-28" />
+                                {MEALS.map((meal) => (
+                                    <th key={meal.id} className="py-2 px-3 text-center font-normal text-muted-foreground whitespace-nowrap">
+                                        {meal.name}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {DAYS.map((day) => (
+                                <tr key={day.id} className="border-t first:border-t-0">
+                                    <td className="py-2 pl-3 pr-4 font-medium">{day.name}</td>
+                                    {MEALS.map((meal) => (
+                                        <td key={meal.id} className="py-2 px-3 text-center">
+                                            <Checkbox
+                                                id={`${id}-${day.id}-${meal.id}`}
+                                                checked={isChecked(day.id, meal.id)}
+                                                onCheckedChange={() => toggle(day.id, meal.id)}
+                                            />
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </FormControl>
+            <InputHelperText helperText={helperText} />
+            <FormError />
+        </FormField>
+    );
+};
 
 // ---------------------------------------------------------------------------
 // MarkdownInput / MarkdownField
@@ -310,6 +415,35 @@ const IngredientsField = () => {
     );
 };
 
+const ScheduleField = () => {
+    const record = useRecordContext();
+    const schedule: Schedule = record?.schedule ?? {};
+
+    const entries = DAYS.flatMap((day) => {
+        const mealIds: string[] = schedule[day.id] ?? [];
+        if (!mealIds.length) return [];
+        const meals = MEALS.filter((m) => mealIds.includes(m.id)).map((m) => m.name);
+        return [{ day: day.name, meals }];
+    });
+
+    if (!entries.length) return null;
+
+    return (
+        <div className="space-y-1">
+            {entries.map((entry) => (
+                <div key={entry.day} className="flex items-start gap-3 text-sm">
+                    <span className="w-24 shrink-0 font-medium">{entry.day}</span>
+                    <div className="flex flex-wrap gap-1">
+                        {entry.meals.map((meal) => (
+                            <Badge key={meal} variant="secondary">{meal}</Badge>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+
 const IngredientsListField = () => {
     const record = useRecordContext();
     const ingredients: Ingredient[] = record?.ingredients ?? [];
@@ -331,6 +465,7 @@ const RecipeForm = () => (
     <SimpleForm>
         <TextInput source="name" required />
         <IngredientsInput source="ingredients" />
+        <ScheduleInput source="schedule" />
         <MarkdownInput source="instructions" />
     </SimpleForm>
 );
@@ -353,6 +488,7 @@ export const RecipeShow = () => (
             <TextField source="id" />
             <TextField source="name" />
             <IngredientsField />
+            <ScheduleField />
             <MarkdownField source="instructions" />
         </SimpleShowLayout>
     </Show>

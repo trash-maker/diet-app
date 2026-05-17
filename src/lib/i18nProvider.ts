@@ -198,6 +198,7 @@ const italianMessages = {
                 name: "Nome",
                 instructions: "Istruzioni",
                 ingredients: "Ingredienti",
+                schedule: "Programmazione",
             },
         },
     },
