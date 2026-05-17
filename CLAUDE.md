@@ -29,9 +29,10 @@ All shadcn-admin-kit components live in `src/components/` as individual `.tsx` f
 ## Import conventions
 
 ```ts
-import { Admin, List, DataTable, TextInput } from "@/components/admin"; // kit components via barrel
-import { Resource } from "ra-core";                                       // NOT from react-admin
-import { Button } from "@/components/ui/button";                         // shadcn primitives directly
+import { Admin } from "@/components/admin";          // Admin wrapper (specific file)
+import { List, DataTable, TextInput } from "@/components"; // all other kit components via barrel
+import { Resource } from "ra-core";                  // NOT from react-admin
+import { Button } from "@/components/ui/button";    // shadcn primitives directly
 import { cn } from "@/lib/utils";
 ```
 
