@@ -34,7 +34,7 @@ const TagsInput = (props: TagsInputProps) => {
     const [open, setOpen] = useState(false);
     const [inputValue, setInputValue] = useState("");
 
-    const { data: aliments = [] } = useGetList("aliments", {
+    const { data: aliments = [] } = useGetList("ingredients", {
         pagination: { page: 1, perPage: 1000 },
         sort: { field: "id", order: "ASC" },
     });
@@ -147,7 +147,7 @@ const TagsField = () => {
     );
 };
 
-const AlimentForm = () => (
+const IngredientForm = () => (
     <SimpleForm>
         <TextInput source="name" required />
         <TextInput source="description" multiline />
@@ -155,7 +155,7 @@ const AlimentForm = () => (
     </SimpleForm>
 );
 
-export const AlimentList = () => (
+export const IngredientList = () => (
     <List>
         <DataTable>
             <DataTable.Col source="id" />
@@ -168,7 +168,7 @@ export const AlimentList = () => (
     </List>
 );
 
-export const AlimentShow = () => (
+export const IngredientShow = () => (
     <Show>
         <SimpleShowLayout>
             <TextField source="id" />
@@ -179,15 +179,15 @@ export const AlimentShow = () => (
     </Show>
 );
 
-export const AlimentEdit = () => (
+export const IngredientEdit = () => (
     <Edit>
-        <AlimentForm />
+        <IngredientForm />
     </Edit>
 );
 
-export const AlimentCreate = () => (
+export const IngredientCreate = () => (
     <Create>
-        <AlimentForm />
+        <IngredientForm />
     </Create>
 );
 

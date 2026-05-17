@@ -129,7 +129,7 @@ const IngredientsInput = (props: IngredientsInputProps) => {
     const [newQty, setNewQty] = useState("");
     const [newUnit, setNewUnit] = useState("");
 
-    const { data: aliments = [] } = useGetList("aliments", {
+    const { data: aliments = [] } = useGetList("ingredients", {
         pagination: { page: 1, perPage: 1000 },
         sort: { field: "name", order: "ASC" },
     });

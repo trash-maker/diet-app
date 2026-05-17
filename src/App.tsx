@@ -4,11 +4,11 @@ import localStorageDataProvider from "ra-data-local-storage";
 import { Admin } from "@/components/admin";
 import { UserList, UserShow, UserEdit, UserCreate } from "@/resources/users";
 import {
-    AlimentList,
-    AlimentShow,
-    AlimentEdit,
-    AlimentCreate,
-} from "@/resources/aliments";
+    IngredientList,
+    IngredientShow,
+    IngredientEdit,
+    IngredientCreate,
+} from "@/resources/ingredients";
 import {
     RecipeList,
     RecipeShow,
@@ -29,12 +29,12 @@ const App = () => (
             create={UserCreate}
         />
         <Resource
-            name="aliments"
+            name="ingredients"
             icon={AppleIcon}
-            list={AlimentList}
-            show={AlimentShow}
-            edit={AlimentEdit}
-            create={AlimentCreate}
+            list={IngredientList}
+            show={IngredientShow}
+            edit={IngredientEdit}
+            create={IngredientCreate}
         />
         <Resource
             name="recipes"
