@@ -1,8 +1,7 @@
 import React, { useMemo, useRef, useState } from "react";
-import { Resource } from "ra-core";
 import { FieldTitle, useGetList, useInput, useRecordContext } from "ra-core";
 import type { InputProps } from "ra-core";
-import { AppleIcon, X } from "lucide-react";
+import { X } from "lucide-react";
 import {
     Create,
     DataTable,
@@ -192,13 +191,3 @@ export const AlimentCreate = () => (
     </Create>
 );
 
-export const AlimentsResource = (
-    <Resource
-        name="aliments"
-        icon={AppleIcon}
-        list={AlimentList}
-        show={AlimentShow}
-        edit={AlimentEdit}
-        create={AlimentCreate}
-    />
-);

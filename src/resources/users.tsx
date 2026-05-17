@@ -1,5 +1,3 @@
-import { Resource } from "ra-core";
-import { UsersIcon } from "lucide-react";
 import {
     Create,
     DataTable,
@@ -61,13 +59,3 @@ export const UserCreate = () => (
     </Create>
 );
 
-export const UsersResource = (
-    <Resource
-        name="users"
-        icon={UsersIcon}
-        list={UserList}
-        show={UserShow}
-        edit={UserEdit}
-        create={UserCreate}
-    />
-);
