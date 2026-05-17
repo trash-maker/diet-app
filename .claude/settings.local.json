@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\stefa\\\\Documents\\\\dev\\\\sources\\\\projects\\\\diet-app\\\\src\\\\components\\\\ui\" -Recurse)",
+      "Bash(Select-Object FullName)"
+    ]
+  }
+}
