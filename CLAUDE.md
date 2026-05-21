@@ -79,6 +79,10 @@ type UserSchedules = Record<string, Schedule>;      // { [userId]: Schedule }
 
 Free-form markdown field rendered via `@uiw/react-md-editor`.
 
+### Duplicate recipe
+
+`CloneRecipeButton` (in `src/resources/recipes.tsx`) uses `useCreate` + `useRedirect` from `ra-core` to copy the current record (prepending "Copia di " to the name) and redirect to the edit page of the new record. It appears both as a row action in `RecipeList` and at the bottom of `RecipeShow`.
+
 ## Key conventions
 
 - Use conventional commits

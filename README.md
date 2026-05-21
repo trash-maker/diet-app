@@ -35,6 +35,8 @@ Each recipe has:
 
 Recipe scheduling is user-specific: the schedule grid is scoped to a selected user, so different users can have the same recipe on different days and meals.
 
+A **Duplica** button is available on each row in the list and on the detail page — it creates a copy of the recipe (name prefixed with "Copia di") and opens it in the editor.
+
 ## Data model
 
 ```

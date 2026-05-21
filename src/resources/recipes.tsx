@@ -1,8 +1,8 @@
 import React, { useMemo, useRef, useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
-import { FieldTitle, useGetList, useInput, useRecordContext, useResourceContext } from "ra-core";
+import { FieldTitle, useCreate, useGetList, useInput, useRecordContext, useRedirect, useResourceContext } from "ra-core";
 import type { InputProps } from "ra-core";
-import { Plus, X } from "lucide-react";
+import { Copy, Plus, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import {
     Create,
@@ -539,6 +539,35 @@ const IngredientsListField = () => {
 };
 
 // ---------------------------------------------------------------------------
+// CloneRecipeButton
+// ---------------------------------------------------------------------------
+
+const CloneRecipeButton = () => {
+    const record = useRecordContext();
+    const [create, { isPending }] = useCreate();
+    const redirect = useRedirect();
+
+    const handleClick = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        if (!record) return;
+        const { id, ...data } = record;
+        void id;
+        create(
+            "recipes",
+            { data: { ...data, name: `Copia di ${data.name as string}` } },
+            { onSuccess: (created) => redirect("edit", "recipes", created.id) },
+        );
+    };
+
+    return (
+        <Button variant="outline" size="sm" disabled={isPending} onClick={handleClick}>
+            <Copy className="h-4 w-4" />
+            Duplica
+        </Button>
+    );
+};
+
+// ---------------------------------------------------------------------------
 // CRUD components
 // ---------------------------------------------------------------------------
 
@@ -559,6 +588,9 @@ export const RecipeList = () => (
             <DataTable.Col source="ingredients">
                 <IngredientsListField />
             </DataTable.Col>
+            <DataTable.Col>
+                <CloneRecipeButton />
+            </DataTable.Col>
         </DataTable>
     </List>
 );
@@ -571,6 +603,7 @@ export const RecipeShow = () => (
             <IngredientsField />
             <ScheduleField />
             <MarkdownField source="instructions" />
+            <CloneRecipeButton />
         </SimpleShowLayout>
     </Show>
 );
