@@ -52,13 +52,14 @@ No config file — all theme tokens are defined in `src/index.css` via `@theme i
 
 ## Resources
 
-Three React Admin resources, all stored in localStorage:
+Four React Admin resources, all stored in localStorage:
 
 | Resource | File | Fields |
 |---|---|---|
 | `users` | `src/resources/users.tsx` | `name`, `gender` (male/female/other) |
 | `ingredients` | `src/resources/ingredients.tsx` | `name` |
 | `recipes` | `src/resources/recipes.tsx` | `name`, `ingredients[]`, `schedule`, `instructions` |
+| `meal-plans` | `src/resources/meal-plans.tsx` | `weekStart`, `slots` |
 
 ### Recipe data model
 
@@ -82,6 +83,24 @@ Free-form markdown field rendered via `@uiw/react-md-editor`.
 ### Duplicate recipe
 
 `CloneRecipeButton` (in `src/resources/recipes.tsx`) uses `useCreate` + `useRedirect` from `ra-core` to copy the current record (prepending "Copia di " to the name) and redirect to the edit page of the new record. It appears both as a row action in `RecipeList` and at the bottom of `RecipeShow`.
+
+### Meal plan data model
+
+```ts
+type SlotValue    = { recipeId: string; note: string };
+type MealPlanSlots = Record<string, Record<string, Record<string, SlotValue>>>;
+//                          userId          dayId          mealId
+
+type MealPlan = { id: string; weekStart: string; slots: MealPlanSlots };
+```
+
+`weekStart` is always the ISO date of Monday (`toMonday()` normalises any selected date).
+
+`SlotsInput` / `SlotsField` share the same layout:
+- **Day selector** — row of short-label buttons (Lun–Dom); one day visible at a time
+- **Grid** — rows = users, columns = meals (Colazione · Spuntino · Pranzo · Merenda · Cena)
+- Each editable cell has a recipe-picker button (opens a searchable dialog, only shows recipes whose `schedule[userId][dayId]` includes the meal) and a free-text note input
+- The read-only `SlotsField` mirrors the same table without interactive controls
 
 ## Key conventions
 

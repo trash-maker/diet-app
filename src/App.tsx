@@ -1,5 +1,5 @@
 import { Resource } from "ra-core";
-import { UsersIcon, AppleIcon, UtensilsCrossedIcon } from "lucide-react";
+import { UsersIcon, AppleIcon, UtensilsCrossedIcon, CalendarDaysIcon } from "lucide-react";
 import localStorageDataProvider from "ra-data-local-storage";
 import { Admin } from "@/components/admin";
 import { UserList, UserShow, UserEdit, UserCreate } from "@/resources/users";
@@ -15,6 +15,12 @@ import {
     RecipeEdit,
     RecipeCreate,
 } from "@/resources/recipes";
+import {
+    MealPlanList,
+    MealPlanShow,
+    MealPlanEdit,
+    MealPlanCreate,
+} from "@/resources/meal-plans";
 
 const dataProvider = localStorageDataProvider();
 
@@ -43,6 +49,14 @@ const App = () => (
             show={RecipeShow}
             edit={RecipeEdit}
             create={RecipeCreate}
+        />
+        <Resource
+            name="meal-plans"
+            icon={CalendarDaysIcon}
+            list={MealPlanList}
+            show={MealPlanShow}
+            edit={MealPlanEdit}
+            create={MealPlanCreate}
         />
     </Admin>
 );

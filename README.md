@@ -37,15 +37,27 @@ Recipe scheduling is user-specific: the schedule grid is scoped to a selected us
 
 A **Duplica** button is available on each row in the list and on the detail page — it creates a copy of the recipe (name prefixed with "Copia di") and opens it in the editor.
 
+### Meal Plans
+Weekly meal plans assign recipes to users for specific days and meals.
+
+Each plan has:
+- **Week** — reference Monday date; any selected date is normalised to Monday automatically
+- **Slots** — a user × meal grid navigated by day; each cell holds an optional recipe (chosen from a searchable dialog filtered by the recipe's schedule) and a free-text note
+
+The show page mirrors the edit layout with a read-only version of the same day/user/meal grid.
+
 ## Data model
 
 ```
 users        { id, name, gender }
 ingredients  { id, name }
 recipes      { id, name, ingredients[], schedule, instructions }
+meal-plans   { id, weekStart, slots }
 ```
 
 `schedule` shape: `Record<userId, Record<dayId, mealId[]>>`
+
+`slots` shape: `Record<userId, Record<dayId, Record<mealId, { recipeId, note }>>>`
 
 ## Project structure
 
@@ -56,6 +68,7 @@ src/
     users.tsx
     ingredients.tsx
     recipes.tsx            # ScheduleInput, MarkdownInput, IngredientsInput
+    meal-plans.tsx         # WeekInput, SlotsInput, SlotsField, recipe picker dialog
   components/              # shadcn-admin-kit components + shadcn/ui primitives
   lib/
     i18nProvider.ts        # Full Italian translation
