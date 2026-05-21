@@ -73,10 +73,52 @@ const UNITS = [
 ];
 
 // ---------------------------------------------------------------------------
-// ScheduleInput — griglia giorno × pasto
+// ScheduleInput — griglia giorno × pasto, per utente
 // ---------------------------------------------------------------------------
 
 type Schedule = Record<string, string[]>;
+type UserSchedules = Record<string, Schedule>;
+
+const ScheduleGrid = ({
+    scheduleId,
+    schedule,
+    onToggle,
+}: {
+    scheduleId: string;
+    schedule: Schedule;
+    onToggle: (dayId: string, mealId: string) => void;
+}) => (
+    <div className="overflow-x-auto rounded-md border">
+        <table className="w-full text-sm border-collapse">
+            <thead>
+                <tr className="border-b">
+                    <th className="py-2 pl-3 pr-4 text-left font-normal text-muted-foreground w-28" />
+                    {MEALS.map((meal) => (
+                        <th key={meal.id} className="py-2 px-3 text-center font-normal text-muted-foreground whitespace-nowrap">
+                            {meal.name}
+                        </th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {DAYS.map((day) => (
+                    <tr key={day.id} className="border-t first:border-t-0">
+                        <td className="py-2 pl-3 pr-4 font-medium">{day.name}</td>
+                        {MEALS.map((meal) => (
+                            <td key={meal.id} className="py-2 px-3 text-center">
+                                <Checkbox
+                                    id={`${scheduleId}-${day.id}-${meal.id}`}
+                                    checked={(schedule[day.id] ?? []).includes(meal.id)}
+                                    onCheckedChange={() => onToggle(day.id, meal.id)}
+                                />
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
+);
 
 const ScheduleInput = ({
     source = "schedule",
@@ -89,12 +131,19 @@ const ScheduleInput = ({
 }) => {
     const { id, field, isRequired } = useInput({ source, defaultValue: {} });
     const resource = useResourceContext();
-    const schedule: Schedule = field.value ?? {};
+    const userSchedules: UserSchedules = field.value ?? {};
 
-    const isChecked = (dayId: string, mealId: string) =>
-        (schedule[dayId] ?? []).includes(mealId);
+    const { data: users = [] } = useGetList("users", {
+        pagination: { page: 1, perPage: 1000 },
+        sort: { field: "name", order: "ASC" },
+    });
+
+    const [selectedUserId, setSelectedUserId] = useState<string | null>(null);
+    const effectiveUserId = selectedUserId ?? (users.length > 0 ? String(users[0].id) : null);
 
     const toggle = (dayId: string, mealId: string) => {
+        if (!effectiveUserId) return;
+        const schedule: Schedule = userSchedules[effectiveUserId] ?? {};
         const dayMeals: string[] = schedule[dayId] ?? [];
         const newDayMeals = dayMeals.includes(mealId)
             ? dayMeals.filter((m) => m !== mealId)
@@ -106,7 +155,14 @@ const ScheduleInput = ({
         } else {
             newSchedule[dayId] = newDayMeals;
         }
-        field.onChange(newSchedule);
+
+        const newUserSchedules = { ...userSchedules };
+        if (Object.keys(newSchedule).length === 0) {
+            delete newUserSchedules[effectiveUserId];
+        } else {
+            newUserSchedules[effectiveUserId] = newSchedule;
+        }
+        field.onChange(newUserSchedules);
     };
 
     return (
@@ -117,35 +173,37 @@ const ScheduleInput = ({
                 </FormLabel>
             )}
             <FormControl>
-                <div className="overflow-x-auto rounded-md border">
-                    <table className="w-full text-sm border-collapse">
-                        <thead>
-                            <tr className="border-b">
-                                <th className="py-2 pl-3 pr-4 text-left font-normal text-muted-foreground w-28" />
-                                {MEALS.map((meal) => (
-                                    <th key={meal.id} className="py-2 px-3 text-center font-normal text-muted-foreground whitespace-nowrap">
-                                        {meal.name}
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {DAYS.map((day) => (
-                                <tr key={day.id} className="border-t first:border-t-0">
-                                    <td className="py-2 pl-3 pr-4 font-medium">{day.name}</td>
-                                    {MEALS.map((meal) => (
-                                        <td key={meal.id} className="py-2 px-3 text-center">
-                                            <Checkbox
-                                                id={`${id}-${day.id}-${meal.id}`}
-                                                checked={isChecked(day.id, meal.id)}
-                                                onCheckedChange={() => toggle(day.id, meal.id)}
-                                            />
-                                        </td>
+                <div className="space-y-3">
+                    {users.length === 0 ? (
+                        <p className="text-sm text-muted-foreground">
+                            Nessun utente disponibile. Crea prima un utente per assegnare la programmazione.
+                        </p>
+                    ) : (
+                        <>
+                            <Select
+                                value={effectiveUserId ?? undefined}
+                                onValueChange={setSelectedUserId}
+                            >
+                                <SelectTrigger className="w-56">
+                                    <SelectValue placeholder="Seleziona utente…" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    {users.map((u) => (
+                                        <SelectItem key={u.id} value={String(u.id)}>
+                                            {u.name}
+                                        </SelectItem>
                                     ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                                </SelectContent>
+                            </Select>
+                            {effectiveUserId && (
+                                <ScheduleGrid
+                                    scheduleId={`${id}-${effectiveUserId}`}
+                                    schedule={userSchedules[effectiveUserId] ?? {}}
+                                    onToggle={toggle}
+                                />
+                            )}
+                        </>
+                    )}
                 </div>
             </FormControl>
             <InputHelperText helperText={helperText} />
@@ -415,19 +473,14 @@ const IngredientsField = () => {
     );
 };
 
-const ScheduleField = () => {
-    const record = useRecordContext();
-    const schedule: Schedule = record?.schedule ?? {};
-
+const ScheduleDayRows = ({ schedule }: { schedule: Schedule }) => {
     const entries = DAYS.flatMap((day) => {
         const mealIds: string[] = schedule[day.id] ?? [];
         if (!mealIds.length) return [];
         const meals = MEALS.filter((m) => mealIds.includes(m.id)).map((m) => m.name);
         return [{ day: day.name, meals }];
     });
-
     if (!entries.length) return null;
-
     return (
         <div className="space-y-1">
             {entries.map((entry) => (
@@ -438,6 +491,34 @@ const ScheduleField = () => {
                             <Badge key={meal} variant="secondary">{meal}</Badge>
                         ))}
                     </div>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+const ScheduleField = () => {
+    const record = useRecordContext();
+    const userSchedules: UserSchedules = record?.schedule ?? {};
+
+    const { data: users = [] } = useGetList("users", {
+        pagination: { page: 1, perPage: 1000 },
+        sort: { field: "name", order: "ASC" },
+    });
+
+    const userMap = Object.fromEntries(users.map((u) => [String(u.id), u.name as string]));
+    const entries = Object.entries(userSchedules).filter(([, s]) =>
+        DAYS.some((d) => (s[d.id] ?? []).length > 0)
+    );
+
+    if (!entries.length) return null;
+
+    return (
+        <div className="space-y-4">
+            {entries.map(([userId, schedule]) => (
+                <div key={userId} className="space-y-1">
+                    <p className="text-sm font-semibold">{userMap[userId] ?? userId}</p>
+                    <ScheduleDayRows schedule={schedule} />
                 </div>
             ))}
         </div>

@@ -50,6 +50,35 @@ No config file — all theme tokens are defined in `src/index.css` via `@theme i
 - Three kit files had `../ui/` instead of `./ui/` (already corrected): `array-input.tsx`, `bulk-export-button.tsx`, `cancel-button.tsx`
 - `Github` icon removed from lucide-react v1.x — replaced with `ExternalLink` in `ready.tsx`
 
+## Resources
+
+Three React Admin resources, all stored in localStorage:
+
+| Resource | File | Fields |
+|---|---|---|
+| `users` | `src/resources/users.tsx` | `name`, `gender` (male/female/other) |
+| `ingredients` | `src/resources/ingredients.tsx` | `name` |
+| `recipes` | `src/resources/recipes.tsx` | `name`, `ingredients[]`, `schedule`, `instructions` |
+
+### Recipe data model
+
+```ts
+type Ingredient = { name: string; quantity: string; unit: string };
+
+// schedule is keyed by userId, then by dayId, then list of mealIds
+type Schedule  = Record<string, string[]>;          // { [dayId]: mealId[] }
+type UserSchedules = Record<string, Schedule>;      // { [userId]: Schedule }
+
+// dayIds:  "mon" | "tue" | "wed" | "thu" | "fri" | "sat" | "sun"
+// mealIds: "breakfast" | "morning_snack" | "lunch" | "afternoon_snack" | "dinner"
+```
+
+`ScheduleInput` renders a user selector (dropdown from the `users` resource) + a day×meal checkbox grid for the selected user. `ScheduleField` groups the display by user name.
+
+### Instructions
+
+Free-form markdown field rendered via `@uiw/react-md-editor`.
+
 ## Key conventions
 
 - Use conventional commits
