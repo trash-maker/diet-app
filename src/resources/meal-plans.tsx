@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import {
     FieldTitle,
     useGetList,
+    useGetOne,
     useInput,
     useRecordContext,
     useResourceContext,
@@ -19,6 +21,7 @@ import {
 import { FormControl, FormError, FormField, FormLabel } from "@/components/form";
 import { InputHelperText } from "@/components/input-helper-text";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
     Dialog,
     DialogContent,
@@ -27,6 +30,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { ArrowLeft, ShoppingCart } from "lucide-react";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -66,6 +70,10 @@ type PickerState = {
     validRecipes: { id: string; name: string }[];
 };
 
+type RecipeIngredient = { name: string; quantity: string; unit: string };
+
+type AggItem = { name: string; unit: string; totalNum: number; extras: string[] };
+
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
@@ -98,6 +106,51 @@ function formatWeekRange(mondayStr: string): string {
     const full = (dt: Date) =>
         dt.toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
     return `${short(mon)} – ${full(sun)}`;
+}
+
+// Counts recipe occurrences across all slots, then aggregates ingredient quantities.
+function buildShoppingList(
+    slots: MealPlanSlots,
+    recipeMap: Record<string, { ingredients?: RecipeIngredient[] }>,
+): Record<string, AggItem> {
+    const recipeCounts: Record<string, number> = {};
+    for (const daySlots of Object.values(slots)) {
+        for (const mealSlots of Object.values(daySlots)) {
+            for (const sv of Object.values(mealSlots)) {
+                if (sv.recipeId) {
+                    recipeCounts[sv.recipeId] = (recipeCounts[sv.recipeId] ?? 0) + 1;
+                }
+            }
+        }
+    }
+
+    const totals: Record<string, AggItem> = {};
+    for (const [recipeId, count] of Object.entries(recipeCounts)) {
+        const recipe = recipeMap[recipeId];
+        if (!recipe) continue;
+        for (const ing of recipe.ingredients ?? []) {
+            const key = `${ing.name}|||${ing.unit}`;
+            if (!totals[key]) totals[key] = { name: ing.name, unit: ing.unit, totalNum: 0, extras: [] };
+            const qty = parseFloat(ing.quantity);
+            if (!isNaN(qty)) {
+                totals[key].totalNum += qty * count;
+            } else if (ing.quantity) {
+                for (let i = 0; i < count; i++) totals[key].extras.push(ing.quantity);
+            }
+        }
+    }
+    return totals;
+}
+
+function formatTotal(item: AggItem): string {
+    const parts: string[] = [];
+    if (item.totalNum > 0) {
+        const num = item.totalNum % 1 === 0 ? String(item.totalNum) : item.totalNum.toFixed(2);
+        parts.push(item.unit ? `${num} ${item.unit}` : num);
+    }
+    const uniqueExtras = [...new Set(item.extras)];
+    if (uniqueExtras.length > 0) parts.push(uniqueExtras.join(", "));
+    return parts.join(" + ") || item.unit || "—";
 }
 
 // ---------------------------------------------------------------------------
@@ -557,6 +610,25 @@ const SlotsField = () => {
 };
 
 // ---------------------------------------------------------------------------
+// ShoppingListButton (used in show page)
+// ---------------------------------------------------------------------------
+
+const ShoppingListButton = () => {
+    const record = useRecordContext();
+    const navigate = useNavigate();
+    return (
+        <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate(`/meal-plans/${record?.id}/shopping-list`)}
+        >
+            <ShoppingCart className="h-4 w-4" />
+            Lista della spesa
+        </Button>
+    );
+};
+
+// ---------------------------------------------------------------------------
 // CRUD components
 // ---------------------------------------------------------------------------
 
@@ -584,6 +656,7 @@ export const MealPlanShow = () => (
             <TextField source="id" />
             <WeekField source="weekStart" />
             <SlotsField />
+            <ShoppingListButton />
         </SimpleShowLayout>
     </Show>
 );
@@ -599,3 +672,170 @@ export const MealPlanCreate = () => (
         <MealPlanForm />
     </Create>
 );
+
+// ---------------------------------------------------------------------------
+// ShoppingListPage — custom route /meal-plans/:id/shopping-list
+// ---------------------------------------------------------------------------
+
+export const ShoppingListPage = () => {
+    const { id = "" } = useParams<{ id: string }>();
+    const navigate = useNavigate();
+
+    const { data: mealPlan, isLoading: planLoading } = useGetOne(
+        "meal-plans",
+        { id },
+        { enabled: Boolean(id) },
+    );
+
+    const { data: recipes = [], isLoading: recipesLoading } = useGetList("recipes", {
+        pagination: { page: 1, perPage: 1000 },
+        sort: { field: "name", order: "ASC" },
+    });
+
+    const { data: ingredientRecords = [] } = useGetList("ingredients", {
+        pagination: { page: 1, perPage: 1000 },
+        sort: { field: "name", order: "ASC" },
+    });
+
+    const [checked, setChecked] = useState<Set<string>>(new Set());
+
+    const recipeMap = useMemo(
+        () =>
+            Object.fromEntries(
+                recipes.map((r) => [
+                    String(r.id),
+                    r as { ingredients?: RecipeIngredient[] },
+                ]),
+            ),
+        [recipes],
+    );
+
+    // ingredient name → primary tag (first tag, or "Altro")
+    const ingredientTagMap = useMemo(
+        () =>
+            Object.fromEntries(
+                ingredientRecords.map((r) => [
+                    r.name as string,
+                    ((r.tags as string[]) ?? [])[0] ?? "Altro",
+                ]),
+            ),
+        [ingredientRecords],
+    );
+
+    const { grouped, sortedTags } = useMemo(() => {
+        if (!mealPlan) return { grouped: {} as Record<string, AggItem[]>, sortedTags: [] as string[] };
+
+        const slots = (mealPlan.slots as MealPlanSlots) ?? {};
+        const totals = buildShoppingList(slots, recipeMap);
+
+        const groups: Record<string, AggItem[]> = {};
+        for (const item of Object.values(totals)) {
+            const tag = ingredientTagMap[item.name] ?? "Altro";
+            if (!groups[tag]) groups[tag] = [];
+            groups[tag].push(item);
+        }
+        for (const items of Object.values(groups)) {
+            items.sort((a, b) => a.name.localeCompare(b.name, "it"));
+        }
+
+        const tags = Object.keys(groups).sort((a, b) => {
+            if (a === "Altro") return 1;
+            if (b === "Altro") return -1;
+            return a.localeCompare(b, "it");
+        });
+
+        return { grouped: groups, sortedTags: tags };
+    }, [mealPlan, recipeMap, ingredientTagMap]);
+
+    const allItems = sortedTags.flatMap((t) => grouped[t]);
+    const doneCount = allItems.filter((item) => checked.has(`${item.name}|||${item.unit}`)).length;
+
+    const toggleCheck = (key: string) => {
+        setChecked((prev) => {
+            const next = new Set(prev);
+            if (next.has(key)) next.delete(key);
+            else next.add(key);
+            return next;
+        });
+    };
+
+    if (planLoading || recipesLoading) {
+        return (
+            <div className="flex items-center justify-center h-64 text-sm text-muted-foreground">
+                Caricamento…
+            </div>
+        );
+    }
+
+    const weekLabel = mealPlan?.weekStart
+        ? formatWeekRange(mealPlan.weekStart as string)
+        : "";
+
+    return (
+        <div className="p-6 max-w-2xl mx-auto space-y-6">
+            {/* Header */}
+            <div className="flex items-center gap-3">
+                <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
+                    <ArrowLeft className="h-4 w-4" />
+                </Button>
+                <div className="flex-1">
+                    <h1 className="text-xl font-semibold">Lista della spesa</h1>
+                    {weekLabel && (
+                        <p className="text-sm text-muted-foreground">{weekLabel}</p>
+                    )}
+                </div>
+                {allItems.length > 0 && (
+                    <span className="text-sm text-muted-foreground">
+                        {doneCount}/{allItems.length}
+                    </span>
+                )}
+            </div>
+
+            {allItems.length === 0 ? (
+                <p className="text-sm text-muted-foreground">
+                    Nessun ingrediente trovato. Aggiungi ricette alla pianificazione.
+                </p>
+            ) : (
+                <div className="space-y-6">
+                    {sortedTags.map((tag) => (
+                        <div key={tag}>
+                            <h2 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">
+                                {tag}
+                            </h2>
+                            <div className="rounded-md border divide-y">
+                                {grouped[tag].map((item) => {
+                                    const key = `${item.name}|||${item.unit}`;
+                                    const isChecked = checked.has(key);
+                                    return (
+                                        <div
+                                            key={key}
+                                            className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-muted/50 transition-colors select-none"
+                                            onClick={() => toggleCheck(key)}
+                                        >
+                                            <Checkbox
+                                                checked={isChecked}
+                                                onCheckedChange={() => toggleCheck(key)}
+                                                onClick={(e) => e.stopPropagation()}
+                                            />
+                                            <span
+                                                className={cn(
+                                                    "flex-1 text-sm",
+                                                    isChecked && "line-through text-muted-foreground",
+                                                )}
+                                            >
+                                                {item.name}
+                                            </span>
+                                            <span className="text-sm text-muted-foreground whitespace-nowrap">
+                                                {formatTotal(item)}
+                                            </span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};

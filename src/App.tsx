@@ -1,5 +1,6 @@
-import { Resource } from "ra-core";
+import { CustomRoutes, Resource } from "ra-core";
 import { UsersIcon, AppleIcon, UtensilsCrossedIcon, CalendarDaysIcon } from "lucide-react";
+import { Route } from "react-router";
 import localStorageDataProvider from "ra-data-local-storage";
 import { Admin } from "@/components/admin";
 import { UserList, UserShow, UserEdit, UserCreate } from "@/resources/users";
@@ -20,12 +21,16 @@ import {
     MealPlanShow,
     MealPlanEdit,
     MealPlanCreate,
+    ShoppingListPage,
 } from "@/resources/meal-plans";
 
 const dataProvider = localStorageDataProvider();
 
 const App = () => (
     <Admin dataProvider={dataProvider}>
+        <CustomRoutes>
+            <Route path="/meal-plans/:id/shopping-list" element={<ShoppingListPage />} />
+        </CustomRoutes>
         <Resource
             name="users"
             icon={UsersIcon}
