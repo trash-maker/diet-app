@@ -1,7 +1,6 @@
-import React, { useMemo, useRef, useState } from "react";
-import { FieldTitle, useGetList, useInput, useRecordContext } from "ra-core";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { FieldTitle, useGetList, useInput } from "ra-core";
 import type { InputProps } from "ra-core";
-import { X } from "lucide-react";
 import {
     Create,
     DataTable,
@@ -15,7 +14,6 @@ import {
 } from "@/components";
 import { FormControl, FormError, FormField, FormLabel } from "@/components/form";
 import { InputHelperText } from "@/components/input-helper-text";
-import { Badge } from "@/components/ui/badge";
 import {
     Command,
     CommandGroup,
@@ -24,101 +22,96 @@ import {
 } from "@/components/ui/command";
 import { Command as CommandPrimitive } from "cmdk";
 
-type TagsInputProps = Omit<InputProps, "source"> &
+// ---------------------------------------------------------------------------
+// CategoryInput — autocomplete su valori già presenti nel dataset
+// ---------------------------------------------------------------------------
+
+type CategoryInputProps = Omit<InputProps, "source"> &
     Partial<Pick<InputProps, "source">> & { className?: string };
 
-const TagsInput = (props: TagsInputProps) => {
-    const source = props.source ?? "tags";
-    const { id, field, isRequired } = useInput({ ...props, source, defaultValue: [] });
+const CategoryInput = (props: CategoryInputProps) => {
+    const source = props.source ?? "category";
+    const { id, field, isRequired } = useInput({ ...props, source, defaultValue: "" });
     const inputRef = useRef<HTMLInputElement>(null);
     const [open, setOpen] = useState(false);
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState<string>(() => field.value ?? "");
 
-    const { data: aliments = [] } = useGetList("ingredients", {
+    // Sync con il valore del form (es. caricamento record in Edit)
+    useEffect(() => {
+        setInputValue(field.value ?? "");
+    }, [field.value]);
+
+    const { data: ingredients = [] } = useGetList("ingredients", {
         pagination: { page: 1, perPage: 1000 },
         sort: { field: "id", order: "ASC" },
     });
 
     const suggestions = useMemo(() => {
-        const all = aliments.flatMap((r) => (r.tags as string[]) ?? []);
-        return [...new Set(all)].filter((t) => !(field.value ?? []).includes(t));
-    }, [aliments, field.value]);
+        const all = ingredients
+            .map((r) => r.category as string)
+            .filter(Boolean);
+        return [...new Set(all)].sort();
+    }, [ingredients]);
 
     const filtered = inputValue
-        ? suggestions.filter((t) => t.toLowerCase().includes(inputValue.toLowerCase()))
+        ? suggestions.filter((c) =>
+              c.toLowerCase().includes(inputValue.toLowerCase()),
+          )
         : suggestions;
 
-    const addTag = (tag: string) => {
-        const t = tag.trim();
-        if (!t || (field.value ?? []).includes(t)) return;
-        field.onChange([...(field.value ?? []), t]);
-        setInputValue("");
+    const selectCategory = (cat: string) => {
+        setInputValue(cat);
+        field.onChange(cat);
+        setOpen(false);
+        inputRef.current?.blur();
     };
 
-    const removeTag = (tag: string) => {
-        field.onChange((field.value ?? []).filter((t: string) => t !== tag));
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if ((e.key === "Enter" || e.key === ",") && inputValue) {
-            e.preventDefault();
-            addTag(inputValue);
-        }
-        if ((e.key === "Backspace" || e.key === "Delete") && !inputValue) {
-            field.onChange((field.value ?? []).slice(0, -1));
-        }
-        if (e.key === "Escape") inputRef.current?.blur();
+    const handleChange = (val: string) => {
+        setInputValue(val);
+        field.onChange(val);
     };
 
     return (
         <FormField className={props.className} id={id} name={field.name}>
             {props.label !== false && (
                 <FormLabel>
-                    <FieldTitle label={props.label} source={source} isRequired={isRequired} />
+                    <FieldTitle
+                        label={props.label}
+                        source={source}
+                        isRequired={isRequired}
+                    />
                 </FormLabel>
             )}
             <FormControl>
-                <Command onKeyDown={handleKeyDown} className="overflow-visible bg-transparent">
-                    <div className="group rounded-md bg-transparent dark:bg-input/30 border border-input px-3 py-1.75 text-sm transition-all ring-offset-background focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]">
-                        <div className="flex flex-wrap gap-1">
-                            {(field.value ?? []).map((tag: string) => (
-                                <Badge key={tag} variant="outline">
-                                    {tag}
-                                    <button
-                                        type="button"
-                                        className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
-                                        onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                                        onClick={(e) => { e.preventDefault(); removeTag(tag); }}
-                                    >
-                                        <X className="h-3 w-3" />
-                                    </button>
-                                </Badge>
-                            ))}
-                            <CommandPrimitive.Input
-                                ref={inputRef}
-                                value={inputValue}
-                                onValueChange={setInputValue}
-                                onBlur={() => setOpen(false)}
-                                onFocus={() => setOpen(true)}
-                                placeholder="Type and press Enter…"
-                                className="ml-2 flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
-                            />
-                        </div>
+                <Command className="overflow-visible bg-transparent">
+                    <div className="rounded-md bg-transparent dark:bg-input/30 border border-input px-3 py-1.75 text-sm transition-all ring-offset-background focus-within:border-ring focus-within:ring-ring/50 focus-within:ring-[3px]">
+                        <CommandPrimitive.Input
+                            ref={inputRef}
+                            value={inputValue}
+                            onValueChange={handleChange}
+                            onBlur={() => setOpen(false)}
+                            onFocus={() => setOpen(true)}
+                            placeholder="Seleziona o scrivi una categoria…"
+                            className="w-full bg-transparent outline-none placeholder:text-muted-foreground"
+                        />
                     </div>
                     <div className="relative">
                         <CommandList>
                             {open && filtered.length > 0 && (
                                 <div className="absolute top-2 z-10 w-full rounded-md border bg-popover text-popover-foreground shadow-md outline-none animate-in">
                                     <CommandGroup className="h-full overflow-auto">
-                                        {filtered.map((tag) => (
+                                        {filtered.map((cat) => (
                                             <CommandItem
-                                                key={tag}
-                                                value={tag}
-                                                onMouseDown={(e) => { e.preventDefault(); e.stopPropagation(); }}
-                                                onSelect={() => addTag(tag)}
+                                                key={cat}
+                                                value={cat}
+                                                onMouseDown={(e) => {
+                                                    e.preventDefault();
+                                                    e.stopPropagation();
+                                                }}
+                                                onSelect={() => selectCategory(cat)}
                                                 className="cursor-pointer"
                                             >
-                                                {tag}
+                                                {cat}
                                             </CommandItem>
                                         ))}
                                     </CommandGroup>
@@ -134,26 +127,21 @@ const TagsInput = (props: TagsInputProps) => {
     );
 };
 
-const TagsField = () => {
-    const record = useRecordContext();
-    const tags: string[] = record?.tags ?? [];
-    if (!tags.length) return null;
-    return (
-        <div className="flex flex-wrap gap-1">
-            {tags.map((tag) => (
-                <Badge key={tag} variant="outline">{tag}</Badge>
-            ))}
-        </div>
-    );
-};
+// ---------------------------------------------------------------------------
+// Form condiviso
+// ---------------------------------------------------------------------------
 
 const IngredientForm = () => (
     <SimpleForm>
         <TextInput source="name" required />
         <TextInput source="description" multiline />
-        <TagsInput source="tags" />
+        <CategoryInput source="category" />
     </SimpleForm>
 );
+
+// ---------------------------------------------------------------------------
+// List / Show / Edit / Create
+// ---------------------------------------------------------------------------
 
 export const IngredientList = () => (
     <List>
@@ -161,9 +149,7 @@ export const IngredientList = () => (
             <DataTable.Col source="id" />
             <DataTable.Col source="name" />
             <DataTable.Col source="description" />
-            <DataTable.Col source="tags">
-                <TagsField />
-            </DataTable.Col>
+            <DataTable.Col source="category" />
         </DataTable>
     </List>
 );
@@ -174,7 +160,7 @@ export const IngredientShow = () => (
             <TextField source="id" />
             <TextField source="name" />
             <TextField source="description" />
-            <TagsField />
+            <TextField source="category" />
         </SimpleShowLayout>
     </Show>
 );
@@ -190,4 +176,3 @@ export const IngredientCreate = () => (
         <IngredientForm />
     </Create>
 );
-
