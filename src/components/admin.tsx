@@ -120,7 +120,7 @@ export const Admin = (props: CoreAdminProps) => {
     ready = Ready,
     requireAuth,
     store = defaultStore,
-    title = "Shadcn Admin",
+    title = "La mia dieta",
   } = props;
   return (
     <AdminContext
