@@ -1,7 +1,9 @@
 import {
   Breadcrumb,
   BreadcrumbItem,
+  BreadcrumbList,
   BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import type { CreateBaseProps } from "ra-core";
 import {
@@ -100,19 +102,25 @@ export const CreateView = ({
     <>
       {!disableBreadcrumb && (
         <Breadcrumb>
-          {hasDashboard && (
+          <BreadcrumbList>
+            {hasDashboard && (
+              <>
+                <BreadcrumbItem>
+                  <Link to="/">
+                    <Translate i18nKey="ra.page.dashboard">Home</Translate>
+                  </Link>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+              </>
+            )}
             <BreadcrumbItem>
-              <Link to="/">
-                <Translate i18nKey="ra.page.dashboard">Home</Translate>
-              </Link>
+              <Link to={listLink}>{listLabel}</Link>
             </BreadcrumbItem>
-          )}
-          <BreadcrumbItem>
-            <Link to={listLink}>{listLabel}</Link>
-          </BreadcrumbItem>
-          <BreadcrumbPage>
-            <Translate i18nKey="ra.action.create">Create</Translate>
-          </BreadcrumbPage>
+            <BreadcrumbSeparator />
+            <BreadcrumbPage>
+              <Translate i18nKey="ra.action.create">Crea</Translate>
+            </BreadcrumbPage>
+          </BreadcrumbList>
         </Breadcrumb>
       )}
       <div

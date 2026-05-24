@@ -15,7 +15,9 @@ import { Link } from "react-router";
 import {
   Breadcrumb,
   BreadcrumbItem,
+  BreadcrumbList,
   BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { cn } from "@/lib/utils";
 import { ShowButton } from "@/components/show-button";
@@ -117,17 +119,23 @@ export const EditView = ({
     <>
       {!disableBreadcrumb && (
         <Breadcrumb>
-          {hasDashboard && (
+          <BreadcrumbList>
+            {hasDashboard && (
+              <>
+                <BreadcrumbItem>
+                  <Link to="/">
+                    <Translate i18nKey="ra.page.dashboard">Home</Translate>
+                  </Link>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+              </>
+            )}
             <BreadcrumbItem>
-              <Link to="/">
-                <Translate i18nKey="ra.page.dashboard">Home</Translate>
-              </Link>
+              <Link to={listLink}>{listLabel}</Link>
             </BreadcrumbItem>
-          )}
-          <BreadcrumbItem>
-            <Link to={listLink}>{listLabel}</Link>
-          </BreadcrumbItem>
-          <BreadcrumbPage>{recordRepresentation}</BreadcrumbPage>
+            <BreadcrumbSeparator />
+            <BreadcrumbPage>{recordRepresentation}</BreadcrumbPage>
+          </BreadcrumbList>
         </Breadcrumb>
       )}
       <div

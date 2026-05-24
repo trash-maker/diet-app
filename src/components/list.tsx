@@ -1,7 +1,9 @@
 import {
   Breadcrumb,
   BreadcrumbItem,
+  BreadcrumbList,
   BreadcrumbPage,
+  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import type { ListBaseProps, ListControllerResult, RaRecord } from "ra-core";
 import {
@@ -130,14 +132,19 @@ export const ListView = <RecordType extends RaRecord = RaRecord>(
     <>
       {!disableBreadcrumb && (
         <Breadcrumb>
-          {hasDashboard && (
-            <BreadcrumbItem>
-              <Link to="/">
-                <Translate i18nKey="ra.page.dashboard">Home</Translate>
-              </Link>
-            </BreadcrumbItem>
-          )}
-          <BreadcrumbPage>{resourceLabel}</BreadcrumbPage>
+          <BreadcrumbList>
+            {hasDashboard && (
+              <>
+                <BreadcrumbItem>
+                  <Link to="/">
+                    <Translate i18nKey="ra.page.dashboard">Home</Translate>
+                  </Link>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+              </>
+            )}
+            <BreadcrumbPage>{resourceLabel}</BreadcrumbPage>
+          </BreadcrumbList>
         </Breadcrumb>
       )}
 

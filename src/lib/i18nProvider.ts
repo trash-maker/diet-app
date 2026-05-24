@@ -117,7 +117,8 @@ const italianMessages = {
             ...englishMessages.ra.navigation,
             clear_filters: "Rimuovi filtri",
             no_filtered_results: "Nessun %{name} trovato con i filtri attuali.",
-            no_results: "Nessun %{name} trovato",
+            no_results: "Nessun risultato trovato.",
+            page_rows_per_page: "Righe per pagina",
             no_more_results: "La pagina %{page} è fuori dai limiti. Prova la pagina precedente.",
             page_out_of_boundaries: "Pagina %{page} fuori dai limiti",
             page_out_from_end: "Impossibile andare oltre l'ultima pagina",
@@ -189,6 +190,7 @@ const italianMessages = {
             fields: {
                 name: "Nome",
                 description: "Descrizione",
+                category: "Categoria",
                 tags: "Tag",
             },
         },
@@ -199,6 +201,14 @@ const italianMessages = {
                 instructions: "Istruzioni",
                 ingredients: "Ingredienti",
                 schedule: "Programmazione",
+            },
+        },
+        "meal-plans": {
+            name: "Piano alimentare |||| Piani alimentari",
+            fields: {
+                weekStart: "Inizio settimana",
+                slots: "Pasti",
+                shoppingListChecked: "Lista della spesa",
             },
         },
     },

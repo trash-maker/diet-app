@@ -13,9 +13,9 @@ import {
 } from "@/components";
 
 const genderChoices = [
-    { id: "male", name: "Male" },
-    { id: "female", name: "Female" },
-    { id: "other", name: "Other" },
+    { id: "male", name: "Uomo" },
+    { id: "female", name: "Donna" },
+    { id: "other", name: "Altro" },
 ];
 
 const UserForm = () => (
