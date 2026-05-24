@@ -46,18 +46,22 @@ Each plan has:
 
 The show page mirrors the edit layout with a read-only version of the same day/user/meal grid.
 
+A **Lista della spesa** button on the show page opens a dedicated shopping list view that aggregates all ingredients across the week's recipes, grouped by category. Items can be ticked off individually per recipe contribution; the checked state is saved directly on the meal-plan record (`shoppingListChecked`). When the meal plan is saved, stale check marks are automatically pruned: a check is removed if its recipe was removed from the slots or if its occurrence count increased (meaning more quantity is needed).
+
 ## Data model
 
 ```
 users        { id, name, gender }
-ingredients  { id, name }
+ingredients  { id, name, category }
 recipes      { id, name, ingredients[], schedule, instructions }
-meal-plans   { id, weekStart, slots }
+meal-plans   { id, weekStart, slots, shoppingListChecked? }
 ```
 
 `schedule` shape: `Record<userId, Record<dayId, mealId[]>>`
 
 `slots` shape: `Record<userId, Record<dayId, Record<mealId, { recipeId, note }>>>`
+
+`shoppingListChecked`: `string[]` — keys in the form `"ingredientName|||unit|||recipeId"`
 
 ## Project structure
 

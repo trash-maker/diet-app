@@ -8,6 +8,7 @@ import {
     useRecordContext,
     useResourceContext,
     useStore,
+    useUpdate,
 } from "ra-core";
 import {
     Create,
@@ -640,6 +641,44 @@ const ShoppingListButton = () => {
 };
 
 // ---------------------------------------------------------------------------
+// transformMealPlan — strip checked entries whose ingredient qty increased
+// ---------------------------------------------------------------------------
+
+function countRecipesInSlots(slots: MealPlanSlots): Record<string, number> {
+    const counts: Record<string, number> = {};
+    for (const daySlots of Object.values(slots)) {
+        for (const mealSlots of Object.values(daySlots)) {
+            for (const sv of Object.values(mealSlots)) {
+                if (sv.recipeId) counts[sv.recipeId] = (counts[sv.recipeId] ?? 0) + 1;
+            }
+        }
+    }
+    return counts;
+}
+
+// transform prop for <Edit>: (data, { previousData }) => data
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function transformMealPlan(data: any, options?: { previousData: any }): any {
+    const previousData = options?.previousData;
+    const oldSlots: MealPlanSlots = (previousData?.slots as MealPlanSlots) ?? {};
+    const newSlots: MealPlanSlots = (data?.slots as MealPlanSlots) ?? {};
+    const currentChecked: string[] = (previousData?.shoppingListChecked as string[]) ?? [];
+
+    const oldCounts = countRecipesInSlots(oldSlots);
+    const newCounts = countRecipesInSlots(newSlots);
+
+    // key format: "name|||unit|||recipeId"
+    const filteredChecked = currentChecked.filter((key) => {
+        const recipeId = key.split("|||")[2];
+        if (!recipeId) return true;
+        const newCount = newCounts[recipeId] ?? 0;
+        return newCount > 0 && newCount <= (oldCounts[recipeId] ?? 0);
+    });
+
+    return { ...data, shoppingListChecked: filteredChecked };
+}
+
+// ---------------------------------------------------------------------------
 // CRUD components
 // ---------------------------------------------------------------------------
 
@@ -673,7 +712,7 @@ export const MealPlanShow = () => (
 );
 
 export const MealPlanEdit = () => (
-    <Edit>
+    <Edit transform={transformMealPlan}>
         <MealPlanForm />
     </Edit>
 );
@@ -708,7 +747,11 @@ export const ShoppingListPage = () => {
         sort: { field: "name", order: "ASC" },
     });
 
-    const [checkedArr, setCheckedArr] = useStore<string[]>(`shoppingList.${id}.checked`, []);
+    const [update] = useUpdate();
+    const checkedArr: string[] = useMemo(
+        () => (mealPlan?.shoppingListChecked as string[] | undefined) ?? [],
+        [mealPlan],
+    );
     const [hideCompleted, setHideCompleted] = useStore<boolean>(`shoppingList.${id}.hideCompleted`, false);
     const checked = useMemo(() => new Set(checkedArr), [checkedArr]);
 
@@ -766,11 +809,19 @@ export const ShoppingListPage = () => {
         return subKeys.length > 0 && subKeys.every((k) => checked.has(k));
     }).length;
 
+    const saveChecked = (next: Set<string>) => {
+        update("meal-plans", {
+            id,
+            data: { shoppingListChecked: Array.from(next) },
+            previousData: mealPlan,
+        });
+    };
+
     const toggleCheck = (key: string) => {
         const next = new Set(checked);
         if (next.has(key)) next.delete(key);
         else next.add(key);
-        setCheckedArr(Array.from(next));
+        saveChecked(next);
     };
 
     if (planLoading || recipesLoading) {
@@ -852,7 +903,7 @@ export const ShoppingListPage = () => {
                                         const next = new Set(checked);
                                         if (allChecked) subKeys.forEach((k) => next.delete(k));
                                         else subKeys.forEach((k) => next.add(k));
-                                        setCheckedArr(Array.from(next));
+                                        saveChecked(next);
                                     };
 
                                     return (

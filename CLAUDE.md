@@ -59,7 +59,7 @@ Four React Admin resources, all stored in localStorage:
 | `users` | `src/resources/users.tsx` | `name`, `gender` (male/female/other) |
 | `ingredients` | `src/resources/ingredients.tsx` | `name` |
 | `recipes` | `src/resources/recipes.tsx` | `name`, `ingredients[]`, `schedule`, `instructions` |
-| `meal-plans` | `src/resources/meal-plans.tsx` | `weekStart`, `slots` |
+| `meal-plans` | `src/resources/meal-plans.tsx` | `weekStart`, `slots`, `shoppingListChecked` |
 
 ### Recipe data model
 
@@ -91,10 +91,12 @@ type SlotValue    = { recipeId: string; note: string };
 type MealPlanSlots = Record<string, Record<string, Record<string, SlotValue>>>;
 //                          userId          dayId          mealId
 
-type MealPlan = { id: string; weekStart: string; slots: MealPlanSlots };
+type MealPlan = { id: string; weekStart: string; slots: MealPlanSlots; shoppingListChecked?: string[] };
 ```
 
 `weekStart` is always the ISO date of Monday (`toMonday()` normalises any selected date).
+
+`shoppingListChecked` is an array of keys (`"name|||unit|||recipeId"`) identifying which ingredient-per-recipe rows the user has ticked off in the shopping list page. It is persisted directly on the meal-plan record via `useUpdate` (not a form field). On save, `transformMealPlan` (passed to `<Edit transform={...}>`) prunes stale keys: a key is removed if its recipe no longer appears in the slots (count = 0) or its occurrence count increased (quantity is higher than when it was checked off). `hideCompleted` (the eye-toggle) stays in `useStore` as a pure UI preference.
 
 `SlotsInput` / `SlotsField` share the same layout:
 - **Day selector** — row of short-label buttons (Lun–Dom); one day visible at a time
