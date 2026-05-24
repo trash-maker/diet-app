@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import {
     FieldTitle,
@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ChevronLeft, ChevronRight, Eye, EyeOff, ShoppingCart } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Eye, EyeOff, Printer, ShoppingCart } from "lucide-react";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -697,6 +697,24 @@ const ShoppingListButton = () => {
 };
 
 // ---------------------------------------------------------------------------
+// PrintMealPlanButton (used in show page)
+// ---------------------------------------------------------------------------
+
+const PrintMealPlanButton = () => {
+    const record = useRecordContext();
+    return (
+        <Button
+            variant="outline"
+            size="sm"
+            onClick={() => window.open(`#/meal-plans/${record?.id}/print`, "_blank")}
+        >
+            <Printer className="h-4 w-4" />
+            Stampa PDF
+        </Button>
+    );
+};
+
+// ---------------------------------------------------------------------------
 // transformMealPlan — strip checked entries whose ingredient qty increased
 // ---------------------------------------------------------------------------
 
@@ -762,7 +780,10 @@ export const MealPlanShow = () => (
             <TextField source="id" />
             <WeekField source="weekStart" />
             <SlotsField />
-            <ShoppingListButton />
+            <div className="flex gap-2 flex-wrap">
+                <ShoppingListButton />
+                <PrintMealPlanButton />
+            </div>
         </SimpleShowLayout>
     </Show>
 );
@@ -1025,5 +1046,227 @@ export const ShoppingListPage = () => {
                 </div>
             )}
         </div>
+    );
+};
+
+// ---------------------------------------------------------------------------
+// PrintMealPlanPage — custom route /meal-plans/:id/print
+// Aperta in una nuova scheda; auto-trigger window.print() dopo il caricamento.
+// ---------------------------------------------------------------------------
+
+export const PrintMealPlanPage = () => {
+    const { id = "" } = useParams<{ id: string }>();
+
+    const { data: mealPlan, isLoading: planLoading } = useGetOne(
+        "meal-plans",
+        { id },
+        { enabled: Boolean(id) },
+    );
+
+    const { data: users = [], isLoading: usersLoading } = useGetList("users", {
+        pagination: { page: 1, perPage: 1000 },
+        sort: { field: "name", order: "ASC" },
+    });
+
+    const { data: recipes = [], isLoading: recipesLoading } = useGetList("recipes", {
+        pagination: { page: 1, perPage: 1000 },
+        sort: { field: "name", order: "ASC" },
+    });
+
+    const isLoading = planLoading || usersLoading || recipesLoading;
+
+    const recipeMap = useMemo(
+        () => Object.fromEntries(recipes.map((r) => [String(r.id), r.name as string])),
+        [recipes],
+    );
+
+    // Auto-trigger il dialogo di stampa una volta che i dati sono pronti.
+    useEffect(() => {
+        if (isLoading || !mealPlan) return;
+        const t = setTimeout(() => window.print(), 400);
+        return () => clearTimeout(t);
+    }, [isLoading, mealPlan]);
+
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center h-screen text-sm text-muted-foreground">
+                Preparazione stampa…
+            </div>
+        );
+    }
+
+    const slots = (mealPlan?.slots as MealPlanSlots) ?? {};
+    const weekLabel = formatWeekRange((mealPlan?.weekStart as string) ?? "");
+    const today = new Date().toLocaleDateString("it-IT", {
+        day: "numeric", month: "long", year: "numeric",
+    });
+
+    return (
+        <>
+            {/* ── Stili dedicati alla pagina di stampa ──────────────────────── */}
+            <style>{`
+                /* Schermo: simula la larghezza A4 portrait (210mm = ~794px a 96dpi)
+                   meno i margini di stampa (1.5cm × 2 ≈ 113px) → ~681px */
+                .print-page {
+                    width: 100%;
+                    max-width: 681px;
+                    margin: 0 auto;
+                    padding: 2rem 2.5rem;
+                    box-sizing: border-box;
+                    font-family: 'Plus Jakarta Sans Variable', sans-serif;
+                    font-size: 12px;
+                    color: #1a1a1a;
+                    background: #fff;
+                    min-height: 100vh;
+                }
+                .print-page table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    table-layout: auto;
+                }
+                .print-page th,
+                .print-page td {
+                    border: 1px solid #d1d5db;
+                    padding: 5px 8px;
+                    vertical-align: top;
+                    word-break: break-word;
+                }
+                .print-page th {
+                    background: #f0fdf4;
+                    font-weight: 600;
+                    text-align: center;
+                }
+                .print-page th.row-header {
+                    text-align: left;
+                    width: 100px;
+                    background: #f9fafb;
+                    color: #6b7280;
+                    font-weight: 500;
+                }
+                .print-page .day-section {
+                    margin-bottom: 1.75rem;
+                }
+                .print-page .day-title {
+                    font-size: 13px;
+                    font-weight: 700;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    color: #166534;
+                    border-bottom: 2px solid #bbf7d0;
+                    padding-bottom: 4px;
+                    margin-bottom: 6px;
+                }
+                .print-page .day-title.empty {
+                    color: #9ca3af;
+                    border-color: #e5e7eb;
+                }
+                .print-page .recipe-name { font-weight: 600; font-size: 12px; }
+                .print-page .recipe-note { font-size: 11px; color: #6b7280; margin-top: 2px; }
+                .print-page .empty-cell { color: #d1d5db; text-align: center; }
+
+                @media print {
+                    @page { margin: 1.5cm; size: A4 portrait; }
+                    html, body { margin: 0; padding: 0; background: #fff; }
+                    .no-print { display: none !important; }
+                    .print-page { max-width: 100%; padding: 0; min-height: auto; }
+                    .print-page .day-section { page-break-inside: avoid; }
+                }
+            `}</style>
+
+            <div className="print-page">
+                {/* ── Header ───────────────────────────────────────────────── */}
+                <div className="no-print" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "1.5rem" }}>
+                    <div>
+                        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "4px" }}>
+                            <span style={{ fontSize: "20px" }}>🥗</span>
+                            <span style={{ fontSize: "18px", fontWeight: 700 }}>La mia dieta</span>
+                        </div>
+                        <p style={{ fontSize: "14px", color: "#6b7280" }}>{weekLabel}</p>
+                    </div>
+                    <div style={{ display: "flex", gap: "8px" }}>
+                        <Button variant="outline" size="sm" onClick={() => window.close()}>
+                            <ArrowLeft className="h-4 w-4" />
+                            Chiudi
+                        </Button>
+                        <Button size="sm" onClick={() => window.print()}>
+                            <Printer className="h-4 w-4" />
+                            Stampa / Salva PDF
+                        </Button>
+                    </div>
+                </div>
+
+                {/* Intestazione visibile solo in stampa */}
+                <div style={{ display: "none" }} className="print-header-only">
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "1rem" }}>
+                        <div>
+                            <div style={{ fontSize: "16px", fontWeight: 700 }}>🥗 La mia dieta — Piano settimanale</div>
+                            <div style={{ fontSize: "12px", color: "#6b7280" }}>{weekLabel}</div>
+                        </div>
+                        <div style={{ fontSize: "11px", color: "#9ca3af" }}>Stampato il {today}</div>
+                    </div>
+                </div>
+                <style>{`.print-header-only { display: none; } @media print { .print-header-only { display: block !important; } }`}</style>
+
+                {/* ── Griglia per ogni giorno ───────────────────────────────── */}
+                {DAYS.map((day) => {
+                    const hasAnySlot = users.some((u) =>
+                        MEALS.some((m) => slots[String(u.id)]?.[day.id]?.[m.id]?.recipeId),
+                    );
+
+                    return (
+                        <div key={day.id} className="day-section">
+                            <div className={cn("day-title", !hasAnySlot && "empty")}>
+                                {day.label}
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th className="row-header" />
+                                        {users.map((user) => (
+                                            <th key={String(user.id)}>
+                                                {user.name as string}
+                                            </th>
+                                        ))}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {MEALS.map((meal) => (
+                                        <tr key={meal.id}>
+                                            <th className="row-header">{meal.name}</th>
+                                            {users.map((user) => {
+                                                const userId = String(user.id);
+                                                const sv = slots[userId]?.[day.id]?.[meal.id];
+                                                const recipeName = sv?.recipeId
+                                                    ? (recipeMap[sv.recipeId] ?? "?")
+                                                    : null;
+                                                return (
+                                                    <td key={userId}>
+                                                        {recipeName ? (
+                                                            <>
+                                                                <div className="recipe-name">{recipeName}</div>
+                                                                {sv?.note && (
+                                                                    <div className="recipe-note">{sv.note}</div>
+                                                                )}
+                                                            </>
+                                                        ) : (
+                                                            <span className="empty-cell">—</span>
+                                                        )}
+                                                    </td>
+                                                );
+                                            })}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    );
+                })}
+
+                {/* ── Footer (solo schermo) ─────────────────────────────────── */}
+                <div className="no-print" style={{ marginTop: "2rem", paddingTop: "1rem", borderTop: "1px solid #e5e7eb", fontSize: "11px", color: "#9ca3af", textAlign: "right" }}>
+                    Stampato il {today}
+                </div>
+            </div>
+        </>
     );
 };

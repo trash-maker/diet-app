@@ -22,6 +22,7 @@ import {
     MealPlanEdit,
     MealPlanCreate,
     ShoppingListPage,
+    PrintMealPlanPage,
 } from "@/resources/meal-plans";
 
 const dataProvider = localStorageDataProvider();
@@ -30,6 +31,9 @@ const App = () => (
     <Admin dataProvider={dataProvider}>
         <CustomRoutes>
             <Route path="/meal-plans/:id/shopping-list" element={<ShoppingListPage />} />
+        </CustomRoutes>
+        <CustomRoutes noLayout>
+            <Route path="/meal-plans/:id/print" element={<PrintMealPlanPage />} />
         </CustomRoutes>
         <Resource
             name="users"
