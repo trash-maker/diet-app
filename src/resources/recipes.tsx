@@ -1,5 +1,22 @@
 import React, { useMemo, useRef, useState } from "react";
-import MDEditor from "@uiw/react-md-editor";
+import {
+    MDXEditor,
+    headingsPlugin,
+    listsPlugin,
+    quotePlugin,
+    thematicBreakPlugin,
+    linkPlugin,
+    linkDialogPlugin,
+    markdownShortcutPlugin,
+    toolbarPlugin,
+    UndoRedo,
+    Separator,
+    BoldItalicUnderlineToggles,
+    BlockTypeSelect,
+    ListsToggle,
+    CreateLink,
+    InsertThematicBreak,
+} from "@mdxeditor/editor";
 import { FieldTitle, useCreate, useGetList, useInput, useRecordContext, useRedirect, useResourceContext } from "ra-core";
 import type { InputProps } from "ra-core";
 import { Copy, Plus, X } from "lucide-react";
@@ -213,13 +230,47 @@ const ScheduleInput = ({
 };
 
 // ---------------------------------------------------------------------------
-// MarkdownInput / MarkdownField
+// MarkdownInput / MarkdownField  (MDXEditor rich-text)
 // ---------------------------------------------------------------------------
+
+const EDITOR_PLUGINS = [
+    headingsPlugin(),
+    listsPlugin(),
+    quotePlugin(),
+    thematicBreakPlugin(),
+    linkPlugin(),
+    linkDialogPlugin(),
+    markdownShortcutPlugin(),
+    toolbarPlugin({
+        toolbarContents: () => (
+            <>
+                <UndoRedo />
+                <Separator />
+                <BlockTypeSelect />
+                <Separator />
+                <BoldItalicUnderlineToggles />
+                <Separator />
+                <ListsToggle />
+                <Separator />
+                <CreateLink />
+                <InsertThematicBreak />
+            </>
+        ),
+    }),
+];
+
+const READ_ONLY_PLUGINS = [
+    headingsPlugin(),
+    listsPlugin(),
+    quotePlugin(),
+    thematicBreakPlugin(),
+    linkPlugin(),
+];
 
 const MarkdownInput = (props: InputProps) => {
     const { id, field, isRequired } = useInput({ ...props, defaultValue: "" });
     const { resolvedTheme } = useTheme();
-    const colorMode = resolvedTheme === "dark" ? "dark" : "light";
+    const darkClass = resolvedTheme === "dark" ? "dark-theme dark" : "";
 
     return (
         <FormField id={id} name={field.name}>
@@ -228,11 +279,14 @@ const MarkdownInput = (props: InputProps) => {
                     <FieldTitle label={props.label} source={props.source} isRequired={isRequired} />
                 </FormLabel>
             )}
-            <div data-color-mode={colorMode}>
-                <MDEditor
-                    value={field.value ?? ""}
-                    onChange={(val) => field.onChange(val ?? "")}
-                    height={300}
+            <div className="rounded-md border overflow-hidden">
+                <MDXEditor
+                    key={id}
+                    markdown={field.value ?? ""}
+                    onChange={(val) => field.onChange(val)}
+                    className={darkClass}
+                    plugins={EDITOR_PLUGINS}
+                    contentEditableClassName="prose prose-sm dark:prose-invert max-w-none min-h-48 px-4 py-3 focus:outline-none"
                 />
             </div>
             <InputHelperText helperText={props.helperText} />
@@ -245,13 +299,16 @@ const MarkdownField = ({ source = "instructions" }: { source?: string }) => {
     const record = useRecordContext();
     const value: string = record?.[source] ?? "";
     const { resolvedTheme } = useTheme();
-    const colorMode = resolvedTheme === "dark" ? "dark" : "light";
+    const darkClass = resolvedTheme === "dark" ? "dark-theme dark" : "";
 
     if (!value) return null;
     return (
-        <div data-color-mode={colorMode} className="prose prose-sm max-w-none">
-            <MDEditor.Markdown source={value} />
-        </div>
+        <MDXEditor
+            markdown={value}
+            readOnly
+            className={darkClass}
+            plugins={READ_ONLY_PLUGINS}
+        />
     );
 };
 
