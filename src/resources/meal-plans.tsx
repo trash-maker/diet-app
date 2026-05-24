@@ -32,7 +32,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, Eye, EyeOff, ShoppingCart } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Eye, EyeOff, ShoppingCart } from "lucide-react";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -55,6 +55,8 @@ const MEALS = [
     { id: "afternoon_snack", name: "Merenda" },
     { id: "dinner",           name: "Cena" },
 ] as const;
+
+const USERS_PER_PAGE = 5;
 
 // ---------------------------------------------------------------------------
 // Types
@@ -250,6 +252,7 @@ const SlotsInput = ({
     });
 
     const [selectedDay, setSelectedDay] = useState<string>(DAYS[0].id);
+    const [userPage, setUserPage] = useState(0);
     const [picker, setPicker] = useState<PickerState | null>(null);
     const [search, setSearch] = useState("");
 
@@ -315,6 +318,8 @@ const SlotsInput = ({
         : [];
 
     const selectedDayLabel = DAYS.find((d) => d.id === selectedDay)?.label ?? selectedDay;
+    const totalUserPages = Math.ceil(users.length / USERS_PER_PAGE);
+    const pagedUsers = users.slice(userPage * USERS_PER_PAGE, (userPage + 1) * USERS_PER_PAGE);
 
     return (
         <FormField id={id} name={field.name}>
@@ -336,22 +341,49 @@ const SlotsInput = ({
                         </p>
                     ) : (
                         <>
-                            {/* Day selector */}
-                            <div className="flex flex-wrap gap-1">
-                                {DAYS.map((day) => (
-                                    <Button
-                                        key={day.id}
-                                        type="button"
-                                        variant={selectedDay === day.id ? "default" : "outline"}
-                                        size="sm"
-                                        onClick={() => setSelectedDay(day.id)}
-                                    >
-                                        {day.short}
-                                    </Button>
-                                ))}
+                            {/* Day selector + user pagination */}
+                            <div className="flex items-center justify-between gap-2 flex-wrap">
+                                <div className="flex flex-wrap gap-1">
+                                    {DAYS.map((day) => (
+                                        <Button
+                                            key={day.id}
+                                            type="button"
+                                            variant={selectedDay === day.id ? "default" : "outline"}
+                                            size="sm"
+                                            onClick={() => setSelectedDay(day.id)}
+                                        >
+                                            {day.short}
+                                        </Button>
+                                    ))}
+                                </div>
+                                {totalUserPages > 1 && (
+                                    <div className="flex items-center gap-1">
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="icon"
+                                            disabled={userPage === 0}
+                                            onClick={() => setUserPage((p) => p - 1)}
+                                        >
+                                            <ChevronLeft className="h-4 w-4" />
+                                        </Button>
+                                        <span className="text-xs text-muted-foreground tabular-nums">
+                                            {userPage + 1} / {totalUserPages}
+                                        </span>
+                                        <Button
+                                            type="button"
+                                            variant="ghost"
+                                            size="icon"
+                                            disabled={userPage >= totalUserPages - 1}
+                                            onClick={() => setUserPage((p) => p + 1)}
+                                        >
+                                            <ChevronRight className="h-4 w-4" />
+                                        </Button>
+                                    </div>
+                                )}
                             </div>
 
-                            {/* Grid: rows = users, cols = meals */}
+                            {/* Grid: rows = meals, cols = users */}
                             <div className="overflow-x-auto rounded-md border">
                                 <table className="w-full text-sm border-collapse">
                                     <thead>
@@ -359,80 +391,78 @@ const SlotsInput = ({
                                             <th className="py-2 pl-3 pr-4 text-left font-semibold w-32">
                                                 {selectedDayLabel}
                                             </th>
-                                            {MEALS.map((meal) => (
+                                            {pagedUsers.map((user) => (
                                                 <th
-                                                    key={meal.id}
+                                                    key={String(user.id)}
                                                     className="py-2 px-3 text-center font-normal text-muted-foreground whitespace-nowrap"
                                                 >
-                                                    {meal.name}
+                                                    {user.name as string}
                                                 </th>
                                             ))}
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {users.map((user) => {
-                                            const userId = String(user.id);
-                                            return (
-                                                <tr key={userId} className="border-t first:border-t-0">
-                                                    <td className="py-2 pl-3 pr-4 font-medium align-top">
-                                                        {user.name}
-                                                    </td>
-                                                    {MEALS.map((meal) => {
-                                                        const slotVal =
-                                                            slots[userId]?.[selectedDay]?.[meal.id];
-                                                        const hasRecipe = Boolean(slotVal?.recipeId);
-                                                        const recipeName = hasRecipe
-                                                            ? (recipeMap[slotVal!.recipeId] ?? "?")
-                                                            : null;
-                                                        const validCount = getValidRecipes(
-                                                            userId,
-                                                            selectedDay,
-                                                            meal.id,
-                                                        ).length;
+                                        {MEALS.map((meal) => (
+                                            <tr key={meal.id} className="border-t first:border-t-0">
+                                                <td className="py-2 pl-3 pr-4 font-medium align-top whitespace-nowrap">
+                                                    {meal.name}
+                                                </td>
+                                                {pagedUsers.map((user) => {
+                                                    const userId = String(user.id);
+                                                    const slotVal =
+                                                        slots[userId]?.[selectedDay]?.[meal.id];
+                                                    const hasRecipe = Boolean(slotVal?.recipeId);
+                                                    const recipeName = hasRecipe
+                                                        ? (recipeMap[slotVal!.recipeId] ?? "?")
+                                                        : null;
+                                                    const validCount = getValidRecipes(
+                                                        userId,
+                                                        selectedDay,
+                                                        meal.id,
+                                                    ).length;
 
-                                                        return (
-                                                            <td
-                                                                key={meal.id}
-                                                                className="py-2 px-2 min-w-44 align-top"
-                                                            >
-                                                                <div className="flex flex-col gap-1">
-                                                                    <Button
-                                                                        type="button"
-                                                                        variant="outline"
-                                                                        size="sm"
-                                                                        disabled={validCount === 0}
-                                                                        onClick={() => openPicker(userId, meal)}
-                                                                        className={cn(
-                                                                            "w-full justify-start text-xs font-normal truncate",
-                                                                            !hasRecipe &&
-                                                                                "text-muted-foreground",
-                                                                        )}
-                                                                    >
-                                                                        {recipeName ??
-                                                                            (validCount > 0
-                                                                                ? "Seleziona…"
-                                                                                : "—")}
-                                                                    </Button>
-                                                                    <Input
-                                                                        value={slotVal?.note ?? ""}
-                                                                        onChange={(e) =>
-                                                                            setSlotValue(
-                                                                                userId,
-                                                                                selectedDay,
-                                                                                meal.id,
-                                                                                { note: e.target.value },
-                                                                            )
-                                                                        }
-                                                                        placeholder="Nota…"
-                                                                        className="h-7 text-xs"
-                                                                    />
-                                                                </div>
-                                                            </td>
-                                                        );
-                                                    })}
-                                                </tr>
-                                            );
-                                        })}
+                                                    return (
+                                                        <td
+                                                            key={userId}
+                                                            className="py-2 px-2 min-w-44 align-top"
+                                                        >
+                                                            <div className="flex flex-col gap-1">
+                                                                <Button
+                                                                    type="button"
+                                                                    variant="outline"
+                                                                    size="sm"
+                                                                    disabled={validCount === 0}
+                                                                    onClick={() => openPicker(userId, meal)}
+                                                                    className={cn(
+                                                                        "w-full justify-start text-xs font-normal truncate",
+                                                                        !hasRecipe &&
+                                                                            "text-muted-foreground",
+                                                                    )}
+                                                                >
+                                                                    {recipeName ??
+                                                                        (validCount > 0
+                                                                            ? "Seleziona…"
+                                                                            : "—")}
+                                                                </Button>
+                                                                <Input
+                                                                    value={slotVal?.note ?? ""}
+                                                                    onChange={(e) =>
+                                                                        setSlotValue(
+                                                                            userId,
+                                                                            selectedDay,
+                                                                            meal.id,
+                                                                            { note: e.target.value },
+                                                                        )
+                                                                    }
+                                                                    placeholder="Nota…"
+                                                                    className="h-7 text-xs"
+                                                                />
+                                                            </div>
+                                                        </td>
+                                                    );
+                                                })}
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>
@@ -531,6 +561,7 @@ const SlotsField = () => {
     });
 
     const [selectedDay, setSelectedDay] = useState<string>(DAYS[0].id);
+    const [userPage, setUserPage] = useState(0);
 
     const recipeMap = useMemo(
         () => Object.fromEntries(recipes.map((r) => [String(r.id), r.name as string])),
@@ -538,6 +569,8 @@ const SlotsField = () => {
     );
 
     const selectedDayLabel = DAYS.find((d) => d.id === selectedDay)?.label ?? selectedDay;
+    const totalUserPages = Math.ceil(users.length / USERS_PER_PAGE);
+    const pagedUsers = users.slice(userPage * USERS_PER_PAGE, (userPage + 1) * USERS_PER_PAGE);
 
     if (users.length === 0)
         return (
@@ -546,21 +579,46 @@ const SlotsField = () => {
 
     return (
         <div className="space-y-3">
-            {/* Day selector */}
-            <div className="flex flex-wrap gap-1">
-                {DAYS.map((day) => (
-                    <Button
-                        key={day.id}
-                        variant={selectedDay === day.id ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setSelectedDay(day.id)}
-                    >
-                        {day.short}
-                    </Button>
-                ))}
+            {/* Day selector + user pagination */}
+            <div className="flex items-center justify-between gap-2 flex-wrap">
+                <div className="flex flex-wrap gap-1">
+                    {DAYS.map((day) => (
+                        <Button
+                            key={day.id}
+                            variant={selectedDay === day.id ? "default" : "outline"}
+                            size="sm"
+                            onClick={() => setSelectedDay(day.id)}
+                        >
+                            {day.short}
+                        </Button>
+                    ))}
+                </div>
+                {totalUserPages > 1 && (
+                    <div className="flex items-center gap-1">
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            disabled={userPage === 0}
+                            onClick={() => setUserPage((p) => p - 1)}
+                        >
+                            <ChevronLeft className="h-4 w-4" />
+                        </Button>
+                        <span className="text-xs text-muted-foreground tabular-nums">
+                            {userPage + 1} / {totalUserPages}
+                        </span>
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            disabled={userPage >= totalUserPages - 1}
+                            onClick={() => setUserPage((p) => p + 1)}
+                        >
+                            <ChevronRight className="h-4 w-4" />
+                        </Button>
+                    </div>
+                )}
             </div>
 
-            {/* Read-only grid: rows = users, cols = meals */}
+            {/* Read-only grid: rows = meals, cols = users */}
             <div className="overflow-x-auto rounded-md border">
                 <table className="w-full text-sm border-collapse">
                     <thead>
@@ -568,52 +626,50 @@ const SlotsField = () => {
                             <th className="py-2 pl-3 pr-4 text-left font-semibold w-32">
                                 {selectedDayLabel}
                             </th>
-                            {MEALS.map((meal) => (
+                            {pagedUsers.map((user) => (
                                 <th
-                                    key={meal.id}
+                                    key={String(user.id)}
                                     className="py-2 px-3 text-center font-normal text-muted-foreground whitespace-nowrap"
                                 >
-                                    {meal.name}
+                                    {user.name as string}
                                 </th>
                             ))}
                         </tr>
                     </thead>
                     <tbody>
-                        {users.map((user) => {
-                            const userId = String(user.id);
-                            return (
-                                <tr key={userId} className="border-t first:border-t-0">
-                                    <td className="py-2 pl-3 pr-4 font-medium align-top">
-                                        {user.name}
-                                    </td>
-                                    {MEALS.map((meal) => {
-                                        const sv = slots[userId]?.[selectedDay]?.[meal.id];
-                                        const recipeName = sv?.recipeId
-                                            ? (recipeMap[sv.recipeId] ?? sv.recipeId)
-                                            : null;
-                                        return (
-                                            <td
-                                                key={meal.id}
-                                                className="py-2 px-3 min-w-44 align-top"
-                                            >
-                                                {recipeName ? (
-                                                    <div className="space-y-0.5">
-                                                        <p className="font-medium">{recipeName}</p>
-                                                        {sv?.note && (
-                                                            <p className="text-xs text-muted-foreground">
-                                                                {sv.note}
-                                                            </p>
-                                                        )}
-                                                    </div>
-                                                ) : (
-                                                    <span className="text-muted-foreground">—</span>
-                                                )}
-                                            </td>
-                                        );
-                                    })}
-                                </tr>
-                            );
-                        })}
+                        {MEALS.map((meal) => (
+                            <tr key={meal.id} className="border-t first:border-t-0">
+                                <td className="py-2 pl-3 pr-4 font-medium align-top whitespace-nowrap">
+                                    {meal.name}
+                                </td>
+                                {pagedUsers.map((user) => {
+                                    const userId = String(user.id);
+                                    const sv = slots[userId]?.[selectedDay]?.[meal.id];
+                                    const recipeName = sv?.recipeId
+                                        ? (recipeMap[sv.recipeId] ?? sv.recipeId)
+                                        : null;
+                                    return (
+                                        <td
+                                            key={userId}
+                                            className="py-2 px-3 min-w-44 align-top"
+                                        >
+                                            {recipeName ? (
+                                                <div className="space-y-0.5">
+                                                    <p className="font-medium">{recipeName}</p>
+                                                    {sv?.note && (
+                                                        <p className="text-xs text-muted-foreground">
+                                                            {sv.note}
+                                                        </p>
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                <span className="text-muted-foreground">—</span>
+                                            )}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>

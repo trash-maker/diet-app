@@ -100,7 +100,7 @@ type MealPlan = { id: string; weekStart: string; slots: MealPlanSlots; shoppingL
 
 `SlotsInput` / `SlotsField` share the same layout:
 - **Day selector** — row of short-label buttons (Lun–Dom); one day visible at a time
-- **Grid** — rows = users, columns = meals (Colazione · Spuntino · Pranzo · Merenda · Cena)
+- **Grid** — rows = meals (Colazione · Spuntino · Pranzo · Merenda · Cena), columns = users
 - Each editable cell has a recipe-picker button (opens a searchable dialog, only shows recipes whose `schedule[userId][dayId]` includes the meal) and a free-text note input
 - The read-only `SlotsField` mirrors the same table without interactive controls
 
