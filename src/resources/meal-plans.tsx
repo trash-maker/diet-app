@@ -766,7 +766,6 @@ const MealPlanForm = () => (
 export const MealPlanList = () => (
     <List>
         <DataTable>
-            <DataTable.Col source="id" />
             <DataTable.Col source="weekStart">
                 <WeekField />
             </DataTable.Col>
@@ -777,7 +776,6 @@ export const MealPlanList = () => (
 export const MealPlanShow = () => (
     <Show>
         <SimpleShowLayout>
-            <TextField source="id" />
             <WeekField source="weekStart" />
             <SlotsField />
             <div className="flex gap-2 flex-wrap">

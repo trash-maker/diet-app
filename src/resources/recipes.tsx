@@ -640,7 +640,6 @@ const RecipeForm = () => (
 export const RecipeList = () => (
     <List>
         <DataTable>
-            <DataTable.Col source="id" />
             <DataTable.Col source="name" />
             <DataTable.Col source="ingredients">
                 <IngredientsListField />
@@ -655,7 +654,6 @@ export const RecipeList = () => (
 export const RecipeShow = () => (
     <Show>
         <SimpleShowLayout>
-            <TextField source="id" />
             <TextField source="name" />
             <IngredientsField />
             <ScheduleField />

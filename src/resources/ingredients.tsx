@@ -146,7 +146,6 @@ const IngredientForm = () => (
 export const IngredientList = () => (
     <List>
         <DataTable>
-            <DataTable.Col source="id" />
             <DataTable.Col source="name" />
             <DataTable.Col source="description" />
             <DataTable.Col source="category" />
@@ -157,7 +156,6 @@ export const IngredientList = () => (
 export const IngredientShow = () => (
     <Show>
         <SimpleShowLayout>
-            <TextField source="id" />
             <TextField source="name" />
             <TextField source="description" />
             <TextField source="category" />

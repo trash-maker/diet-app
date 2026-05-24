@@ -3,13 +3,12 @@ import {
     DataTable,
     Edit,
     List,
-    SelectField,
     SelectInput,
     Show,
     SimpleForm,
     SimpleShowLayout,
     TextField,
-    TextInput,
+    TextInput
 } from "@/components";
 
 const genderChoices = [
@@ -28,11 +27,7 @@ const UserForm = () => (
 export const UserList = () => (
     <List>
         <DataTable>
-            <DataTable.Col source="id" />
             <DataTable.Col source="name" />
-            <DataTable.Col source="gender">
-                <SelectField source="gender" choices={genderChoices} />
-            </DataTable.Col>
         </DataTable>
     </List>
 );
@@ -40,9 +35,7 @@ export const UserList = () => (
 export const UserShow = () => (
     <Show>
         <SimpleShowLayout>
-            <TextField source="id" />
             <TextField source="name" />
-            <SelectField source="gender" choices={genderChoices} />
         </SimpleShowLayout>
     </Show>
 );
