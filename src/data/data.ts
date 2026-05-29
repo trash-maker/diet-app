@@ -1,871 +1,776 @@
 export const db = {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Stefano",
       "gender": "male"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Fabiola",
       "gender": "female"
     }
   ],
   "ingredients": [
     {
-      "id": "1",
+      "id": 1,
       "name": "Caffè",
       "category": "caffe-marmellate"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Miele",
       "category": "caffe-marmellate"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Marmellata",
       "category": "caffe-marmellate"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Cioccolata calda",
       "category": "caffe-marmellate"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Maionese",
       "category": "dispensa"
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Uova",
       "category": "dispensa"
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Salsa",
       "category": "dispensa"
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Brodo vegetale",
       "category": "dispensa"
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Aceto di mele",
       "category": "dispensa"
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Aceto balsamico",
       "category": "dispensa"
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Tonno",
       "category": "dispensa"
     },
     {
-      "id": "12",
+      "id": 12,
       "name": "Pizza",
       "category": "dispensa"
     },
     {
-      "id": "13",
+      "id": 13,
       "name": "Sgarro",
       "category": "dispensa"
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "Gocce di cioccolato",
       "category": "preparati-per-dolci"
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "Crema di nocciole",
       "category": "preparati-per-dolci"
     },
     {
-      "id": "16",
+      "id": 16,
       "name": "Cioccolato fondente",
       "category": "preparati-per-dolci"
     },
     {
-      "id": "17",
+      "id": 17,
       "name": "Farina dÔÇÖavena",
       "category": "preparati-per-dolci"
     },
     {
-      "id": "18",
+      "id": 18,
       "name": "Cacao amaro",
       "category": "preparati-per-dolci"
     },
     {
-      "id": "19",
+      "id": 19,
       "name": "Farina",
       "category": "preparati-per-dolci"
     },
     {
-      "id": "20",
+      "id": 20,
       "name": "Lievito",
       "category": "preparati-per-dolci"
     },
     {
-      "id": "21",
+      "id": 21,
       "name": "Frutta secca",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "22",
+      "id": 22,
       "name": "Noci",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "23",
+      "id": 23,
       "name": "Mandorle",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "24",
+      "id": 24,
       "name": "Anacardi",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "25",
+      "id": 25,
       "name": "Nocciole",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "26",
+      "id": 26,
       "name": "Granella di nocciole",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "27",
+      "id": 27,
       "name": "Noci Pecan",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "28",
+      "id": 28,
       "name": "Pasta integrale",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "29",
+      "id": 29,
       "name": "Orzo perlato",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "30",
+      "id": 30,
       "name": "Pastina",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "31",
+      "id": 31,
       "name": "Riso",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "32",
+      "id": 32,
       "name": "Cous cous/Orzo/Riso/Farro",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "33",
+      "id": 33,
       "name": "Cous cous",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "34",
+      "id": 34,
       "name": "Farro",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "35",
+      "id": 35,
       "name": "Ceci",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "36",
+      "id": 36,
       "name": "Legumi",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "37",
+      "id": 37,
       "name": "Piselli",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "38",
+      "id": 38,
       "name": "Olive nere",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "39",
+      "id": 39,
       "name": "Lenticchie",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "40",
+      "id": 40,
       "name": "Fagioli borlotti",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "41",
+      "id": 41,
       "name": "Fagioli cannellini",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "42",
+      "id": 42,
       "name": "Verdura",
       "category": "verdura"
     },
     {
-      "id": "43",
+      "id": 43,
       "name": "Soffritto",
       "category": "verdura"
     },
     {
-      "id": "44",
+      "id": 44,
       "name": "Insalata",
       "category": "verdura"
     },
     {
-      "id": "45",
+      "id": 45,
       "name": "Pomodori",
       "category": "verdura"
     },
     {
-      "id": "46",
+      "id": 46,
       "name": "Cavolfiore",
       "category": "verdura"
     },
     {
-      "id": "47",
+      "id": 47,
       "name": "Zucchine",
       "category": "verdura"
     },
     {
-      "id": "48",
+      "id": 48,
       "name": "Peperoni",
       "category": "verdura"
     },
     {
-      "id": "49",
+      "id": 49,
       "name": "Zucca",
       "category": "verdura"
     },
     {
-      "id": "50",
+      "id": 50,
       "name": "Patate",
       "category": "verdura"
     },
     {
-      "id": "51",
+      "id": 51,
       "name": "Rucola",
       "category": "verdura"
     },
     {
-      "id": "52",
+      "id": 52,
       "name": "Cipolla",
       "category": "verdura"
     },
     {
-      "id": "53",
+      "id": 53,
       "name": "Funghi champignon",
       "category": "verdura"
     },
     {
-      "id": "54",
+      "id": 54,
       "name": "Aglio",
       "category": "verdura"
     },
     {
-      "id": "55",
+      "id": 55,
       "name": "Prezzemolo",
       "category": "verdura"
     },
     {
-      "id": "56",
+      "id": 56,
       "name": "Carote",
       "category": "verdura"
     },
     {
-      "id": "57",
+      "id": 57,
       "name": "Radicchio",
       "category": "verdura"
     },
     {
-      "id": "58",
+      "id": 58,
       "name": "Cipollotto",
       "category": "verdura"
     },
     {
-      "id": "59",
+      "id": 59,
       "name": "Passata di pomodoro",
       "category": "verdura"
     },
     {
-      "id": "60",
+      "id": 60,
       "name": "Broccoli",
       "category": "verdura"
     },
     {
-      "id": "61",
+      "id": 61,
       "name": "Cappuccio",
       "category": "verdura"
     },
     {
-      "id": "62",
+      "id": 62,
       "name": "Limone",
       "category": "verdura"
     },
     {
-      "id": "63",
+      "id": 63,
       "name": "Porri",
       "category": "verdura"
     },
     {
-      "id": "64",
+      "id": 64,
       "name": "Cavolo nero",
       "category": "verdura"
     },
     {
-      "id": "65",
+      "id": 65,
       "name": "Frutta",
       "category": "frutta"
     },
     {
-      "id": "66",
+      "id": 66,
       "name": "Avocado",
       "category": "frutta"
     },
     {
-      "id": "67",
+      "id": 67,
       "name": "Pere",
       "category": "frutta"
     },
     {
-      "id": "68",
+      "id": 68,
       "name": "Mele",
       "category": "frutta"
     },
     {
-      "id": "69",
+      "id": 69,
       "name": "Arance",
       "category": "frutta"
     },
     {
-      "id": "70",
+      "id": 70,
       "name": "Kiwi",
       "category": "frutta"
     },
     {
-      "id": "71",
+      "id": 71,
       "name": "Mandarini",
       "category": "frutta"
     },
     {
-      "id": "72",
+      "id": 72,
       "name": "Latte",
       "category": "latticini"
     },
     {
-      "id": "73",
+      "id": 73,
       "name": "Formaggio Grana",
       "category": "latticini"
     },
     {
-      "id": "74",
+      "id": 74,
       "name": "Ricotta light",
       "category": "latticini"
     },
     {
-      "id": "75",
+      "id": 75,
       "name": "Formaggio a scelta",
       "category": "latticini"
     },
     {
-      "id": "76",
+      "id": 76,
       "name": "Fiocchi di latte",
       "category": "latticini"
     },
     {
-      "id": "77",
+      "id": 77,
       "name": "Primosale",
       "category": "latticini"
     },
     {
-      "id": "78",
+      "id": 78,
       "name": "Yogurt bianco non zuccherato",
       "category": "latticini"
     },
     {
-      "id": "79",
+      "id": 79,
       "name": "Formaggio Quark",
       "category": "latticini"
     },
     {
-      "id": "80",
+      "id": 80,
       "name": "Robiola",
       "category": "latticini"
     },
     {
-      "id": "81",
+      "id": 81,
       "name": "Yogurt greco 0% bianco",
       "category": "latticini"
     },
     {
-      "id": "82",
+      "id": 82,
       "name": "Philadelphia light",
       "category": "latticini"
     },
     {
-      "id": "83",
+      "id": 83,
       "name": "Mozzarella",
       "category": "latticini"
     },
     {
-      "id": "84",
+      "id": 84,
       "name": "Formaggio caprino",
       "category": "latticini"
     },
     {
-      "id": "85",
+      "id": 85,
       "name": "Formaggio grattuggiato",
       "category": "latticini"
     },
     {
-      "id": "86",
+      "id": 86,
       "name": "Formaggio semistagionato",
       "category": "latticini"
     },
     {
-      "id": "87",
+      "id": 87,
       "name": "Stracchino",
       "category": "latticini"
     },
     {
-      "id": "88",
+      "id": 88,
       "name": "Burro",
       "category": "latticini"
     },
     {
-      "id": "89",
+      "id": 89,
       "name": "Carne bianca",
       "category": "carne"
     },
     {
-      "id": "90",
+      "id": 90,
       "name": "Carne rossa",
       "category": "carne"
     },
     {
-      "id": "91",
+      "id": 91,
       "name": "Bresaola",
       "category": "carne"
     },
     {
-      "id": "92",
+      "id": 92,
       "name": "Pollo",
       "category": "carne"
     },
     {
-      "id": "93",
+      "id": 93,
       "name": "Tacchino",
       "category": "carne"
     },
     {
-      "id": "94",
+      "id": 94,
       "name": "Fesa di tacchino",
       "category": "carne"
     },
     {
-      "id": "95",
+      "id": 95,
       "name": "Coniglio",
       "category": "carne"
     },
     {
-      "id": "96",
+      "id": 96,
       "name": "Anatra",
       "category": "carne"
     },
     {
-      "id": "97",
+      "id": 97,
       "name": "Faraona",
       "category": "carne"
     },
     {
-      "id": "98",
+      "id": 98,
       "name": "Pesce",
       "category": "pesce"
     },
     {
-      "id": "99",
+      "id": 99,
       "name": "Merluzzo",
       "category": "pesce"
     },
     {
-      "id": "100",
+      "id": 100,
       "name": "Branzino",
       "category": "pesce"
     },
     {
-      "id": "101",
+      "id": 101,
       "name": "Orata",
       "category": "pesce"
     },
     {
-      "id": "102",
+      "id": 102,
       "name": "Sogliola",
       "category": "pesce"
     },
     {
-      "id": "103",
+      "id": 103,
       "name": "Pangasio",
       "category": "pesce"
     },
     {
-      "id": "104",
+      "id": 104,
       "name": "Gamberetti",
       "category": "pesce"
     },
     {
-      "id": "105",
+      "id": 105,
       "name": "Salmone",
       "category": "pesce"
     },
     {
-      "id": "106",
+      "id": 106,
       "name": "Salmone affumicato",
       "category": "pesce"
     },
     {
-      "id": "107",
+      "id": 107,
       "name": "Cannella",
       "category": "spezie"
     },
     {
-      "id": "108",
+      "id": 108,
       "name": "Curry",
       "category": "spezie"
     },
     {
-      "id": "109",
+      "id": 109,
       "name": "Noce moscata",
       "category": "spezie"
     },
     {
-      "id": "110",
+      "id": 110,
       "name": "Paprika",
       "category": "spezie"
     },
     {
-      "id": "111",
+      "id": 111,
       "name": "Zenzero",
       "category": "spezie"
     },
     {
-      "id": "112",
+      "id": 112,
       "name": "Rosmarino",
       "category": "spezie"
     },
     {
-      "id": "113",
+      "id": 113,
       "name": "Alloro",
       "category": "spezie"
     },
     {
-      "id": "114",
+      "id": 114,
       "name": "Curcuma",
       "category": "spezie"
     },
     {
-      "id": "115",
+      "id": 115,
       "name": "Muesli",
       "category": "panificati"
     },
     {
-      "id": "116",
+      "id": 116,
       "name": "Oro Saiwa",
       "category": "panificati"
     },
     {
-      "id": "117",
+      "id": 117,
       "name": "Pane",
       "category": "panificati"
     },
     {
-      "id": "118",
+      "id": 118,
       "name": "Crostini",
       "category": "panificati"
     },
     {
-      "id": "119",
+      "id": 119,
       "name": "Fette biscottate integrali",
       "category": "panificati"
     },
     {
-      "id": "120",
+      "id": 120,
       "name": "Belle e buone Galbusera 5 colazioni",
       "category": "panificati"
     },
     {
-      "id": "121",
+      "id": 121,
       "name": "Polenta",
       "category": "panificati"
     },
     {
-      "id": "122",
+      "id": 122,
       "name": "Crackers",
       "category": "panificati"
     },
     {
-      "id": "123",
+      "id": 123,
       "name": "Dolce",
       "category": "panificati"
     },
     {
-      "id": "124",
+      "id": 124,
       "name": "Pancarr├¿",
       "category": "panificati"
     },
     {
-      "id": "125",
+      "id": 125,
       "name": "Triangolini mais Si e No",
       "category": "panificati"
     },
     {
-      "id": "126",
+      "id": 126,
       "name": "Pangrattato",
       "category": "panificati"
     },
     {
-      "id": "127",
+      "id": 127,
       "name": "Lasagne",
       "category": "panificati"
     },
     {
-      "id": "128",
+      "id": 128,
       "name": "Biscotti secchi",
       "category": "panificati"
     },
     {
-      "id": "129",
+      "id": 129,
       "name": "Piadina integrale",
       "category": "panificati"
     },
     {
-      "id": "130",
+      "id": 130,
       "name": "Grissini",
       "category": "panificati"
     },
     {
-      "id": "131",
+      "id": 131,
       "name": "Nocciolata",
       "category": "caffe-marmellate"
     },
     {
-      "id": "132",
+      "id": 132,
       "name": "Funghi",
       "category": "verdura"
     },
     {
-      "id": "133",
+      "id": 133,
       "name": "Uvetta",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "134",
+      "id": 134,
       "name": "Zafferano",
       "category": "spezie"
     },
     {
-      "id": "135",
+      "id": 135,
       "name": "Macinato di pollo",
       "category": "carne"
     },
     {
-      "id": "136",
+      "id": 136,
       "name": "Lonza maiale",
       "category": "carne"
     },
     {
-      "id": "137",
+      "id": 137,
       "name": "Macinato manzo/maiale",
       "category": "carne"
     },
     {
-      "id": "138",
+      "id": 138,
       "name": "Pane da hamburger",
       "category": "panificati"
     },
     {
-      "id": "139",
+      "id": 139,
       "name": "Pinoli",
       "category": "frutta-a-guscio"
     },
     {
-      "id": "140",
+      "id": 140,
       "name": "Basilico",
       "category": "verdura"
     },
     {
-      "id": "141",
+      "id": 141,
       "name": "Vitello",
       "category": "carne"
     },
     {
-      "id": "142",
+      "id": 142,
       "name": "Origano",
       "category": "spezie"
     },
     {
-      "id": "143",
+      "id": 143,
       "name": "Cavolo viola",
       "category": "verdura"
     },
     {
-      "id": "144",
+      "id": 144,
       "name": "Riso soffiato",
       "category": "panificati"
     },
     {
-      "id": "145",
+      "id": 145,
       "name": "Base per pizza",
       "category": "panificati"
     },
     {
-      "id": "146",
+      "id": 146,
       "name": "Riso Venere",
       "category": "riso-Cereali-Pasta-integrale"
     },
     {
-      "id": "147",
+      "id": 147,
       "name": "Melanzane",
       "category": "verdura"
+    },
+    {
+      "category": "latticini",
+      "name": "Gelato",
+      "id": 148
+    },
+    {
+      "category": "dispensa",
+      "name": "Wurstel",
+      "id": 149
+    },
+    {
+      "category": "dispensa",
+      "name": "Preparato insalata di riso",
+      "id": 150
     }
   ],
   "recipes": [
     {
-      "id": "1",
-      "name": "Altro",
-      "ingredients": [],
-      "schedule": {
-        "1": {
-          "mon": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "tue": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "wed": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "thu": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "fri": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "sat": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "sun": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ]
-        },
-        "2": {
-          "mon": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "tue": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "wed": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "thu": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "fri": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "sat": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ],
-          "sun": [
-            "breakfast",
-            "morning_snack",
-            "lunch",
-            "afternoon_snack",
-            "dinner"
-          ]
-        }
-      },
-      "instructions": ""
-    },
-    {
-      "id": "2",
+      "id": 2,
       "name": "Frutta",
       "ingredients": [
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -932,12 +837,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Frutta secca",
       "ingredients": [
         {
           "name": "Frutta secca",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -996,27 +901,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Latte/Caffè con fette biscottate con nocciolata",
       "ingredients": [
         {
           "name": "Latte",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Fette biscottate integrali",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Nocciolata",
-          "quantity": "",
-          "unit": "2 cucchiaini"
+          "unit": "2 cucchiaini",
+          "quantity": null
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         }
       ],
@@ -1036,27 +941,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Yogurt con fette biscottate con miele",
       "ingredients": [
         {
           "name": "Fette biscottate integrali",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "pz"
         },
         {
           "name": "Yogurt bianco non zuccherato",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "gr"
         },
         {
           "name": "Miele",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         }
       ],
@@ -1076,32 +981,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Simil tiramis├╣",
       "ingredients": [
         {
           "name": "Yogurt greco 0% bianco",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Oro Saiwa",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         },
         {
           "name": "Gocce di cioccolato",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         },
         {
           "name": "Caffè",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "tazzine"
         },
         {
           "name": "Miele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         }
       ],
@@ -1120,27 +1025,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Latte/Caffè con muesli",
       "ingredients": [
         {
           "name": "Latte",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Muesli",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Frutta secca",
-          "quantity": "8",
+          "quantity": 8,
           "unit": "pz"
         }
       ],
@@ -1165,27 +1070,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Latte/Caffè con muesli e frutta",
       "ingredients": [
         {
           "name": "Latte",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Muesli",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         }
       ],
@@ -1199,27 +1104,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Pane con philadelphia e frutta",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Philadelphia light",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         },
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         }
       ],
@@ -1238,22 +1143,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Pasta al pomodoro/verdure",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Formaggio grattuggiato",
-          "quantity": "5",
+          "quantity": 5,
           "unit": "cucchiai"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -1278,27 +1183,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Cous cous con verdure",
       "ingredients": [
         {
           "name": "Cous cous",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Curry",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezzo cucchiaino"
         },
         {
           "name": "Formaggio grattuggiato",
-          "quantity": "5",
+          "quantity": 5,
           "unit": "cucchiai"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -1323,27 +1228,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "12",
+      "id": 12,
       "name": "Panino con mozzarella",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "110",
+          "quantity": 110,
           "unit": "gr"
         },
         {
           "name": "Mozzarella",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Maionese",
-          "quantity": "15",
+          "quantity": 15,
           "unit": "gr"
         }
       ],
@@ -1360,27 +1265,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "13",
+      "id": 13,
       "name": "Panino con mozzarella",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "110",
+          "quantity": 110,
           "unit": "gr"
         },
         {
           "name": "Mozzarella",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "gpz"
         }
       ],
@@ -1397,27 +1302,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "Orzo con caprino, radicchio e noci",
       "ingredients": [
         {
           "name": "Orzo perlato",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Formaggio caprino",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Radicchio",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Noci",
-          "quantity": "10",
+          "quantity": 10,
           "unit": "gr"
         }
       ],
@@ -1436,22 +1341,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "Cous Cous con carote e curry",
       "ingredients": [
         {
           "name": "Cous cous",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Carote",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Curry",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezzo cucchiaino"
         }
       ],
@@ -1465,27 +1370,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "16",
+      "id": 16,
       "name": "Cous Cous con carote e curry",
       "ingredients": [
         {
           "name": "Cous cous",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Carote",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Curry",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezzo cucchiaino"
         },
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         }
       ],
@@ -1499,27 +1404,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "17",
+      "id": 17,
       "name": "Orzo con quark e funghi",
       "ingredients": [
         {
           "name": "Orzo perlato",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Formaggio Quark",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Funghi champignon",
-          "quantity": "120",
+          "quantity": 120,
           "unit": "gr"
         },
         {
           "name": "Aglio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "spicchio"
         }
       ],
@@ -1538,22 +1443,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "18",
+      "id": 18,
       "name": "Orzo/farro/CousCous/Riso con verdure",
       "ingredients": [
         {
           "name": "Cous cous/Orzo/Riso/Farro",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Formaggio a scelta",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         }
       ],
@@ -1572,17 +1477,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "19",
+      "id": 19,
       "name": "Yogurt con frutta",
       "ingredients": [
         {
           "name": "Yogurt bianco non zuccherato",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "gr"
         },
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pezzo"
         }
       ],
@@ -1607,17 +1512,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "20",
+      "id": 20,
       "name": "Yogurt con biscotti",
       "ingredients": [
         {
           "name": "Yogurt bianco non zuccherato",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "gr"
         },
         {
           "name": "Biscotti secchi",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         }
       ],
@@ -1636,17 +1541,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "21",
+      "id": 21,
       "name": "Yogurt con granella di nocciole",
       "ingredients": [
         {
           "name": "Yogurt bianco non zuccherato",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "gr"
         },
         {
           "name": "Granella di nocciole",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         }
       ],
@@ -1665,22 +1570,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "22",
+      "id": 22,
       "name": "Yogurt con frutta e gocce cioccolato",
       "ingredients": [
         {
           "name": "Yogurt bianco non zuccherato",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "gr"
         },
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Gocce di cioccolato",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         }
       ],
@@ -1697,12 +1602,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "23",
+      "id": 23,
       "name": "Galbusera",
       "ingredients": [
         {
           "name": "Belle e buone Galbusera 5 colazioni",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza porzione"
         }
       ],
@@ -1719,12 +1624,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "24",
+      "id": 24,
       "name": "Galbusera",
       "ingredients": [
         {
           "name": "Belle e buone Galbusera 5 colazioni",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza porzione"
         }
       ],
@@ -1738,27 +1643,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "25",
+      "id": 25,
       "name": "Bresaola, rucola e grana",
       "ingredients": [
         {
           "name": "Bresaola",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Rucola",
-          "quantity": "80",
+          "quantity": 80,
           "unit": "gr"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "20",
+          "quantity": 20,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         }
       ],
@@ -1777,22 +1682,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "26",
+      "id": 26,
       "name": "Carne bianca con patate",
       "ingredients": [
         {
           "name": "Carne bianca",
-          "quantity": "120",
+          "quantity": 120,
           "unit": "gr"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -1811,22 +1716,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "27",
+      "id": 27,
       "name": "Carne bianca con pane",
       "ingredients": [
         {
           "name": "Carne bianca",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -1851,22 +1756,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "28",
+      "id": 28,
       "name": "Carne bianca con polenta",
       "ingredients": [
         {
           "name": "Carne bianca",
-          "quantity": "120",
+          "quantity": 120,
           "unit": "gr"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -1885,22 +1790,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "29",
+      "id": 29,
       "name": "Latte/Caffè con dolce",
       "ingredients": [
         {
           "name": "Latte",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "ml"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Dolce",
-          "quantity": "80",
+          "quantity": 80,
           "unit": "gr"
         }
       ],
@@ -1920,27 +1825,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "30",
+      "id": 30,
       "name": "Latte/Caffè con dolce",
       "ingredients": [
         {
           "name": "Latte",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "ml"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Frutta secca",
-          "quantity": "10",
+          "quantity": 10,
           "unit": "gr"
         },
         {
           "name": "Dolce",
-          "quantity": "80",
+          "quantity": 80,
           "unit": "gr"
         }
       ],
@@ -1954,37 +1859,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "31",
+      "id": 31,
       "name": "Radicchio tiepido con ceci e noci con pane",
       "ingredients": [
         {
           "name": "Radicchio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Ceci",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Noci",
-          "quantity": "5",
+          "quantity": 5,
           "unit": "gr"
         },
         {
           "name": "Aceto di mele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaio"
         },
         {
           "name": "Aceto balsamico",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         },
         {
           "name": "Pane",
-          "quantity": "110",
+          "quantity": 110,
           "unit": "gr"
         }
       ],
@@ -2003,27 +1908,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "32",
+      "id": 32,
       "name": "Riso con ceci alla paprika e cavolfiore",
       "ingredients": [
         {
           "name": "Riso",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Ceci",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Cavolfiore",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Paprika",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         }
       ],
@@ -2042,32 +1947,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "33",
+      "id": 33,
       "name": "Vellutata di piselli e zucchine",
       "ingredients": [
         {
           "name": "Piselli",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Zucchine",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Cipolla",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "500",
+          "quantity": 500,
           "unit": "ml"
         },
         {
           "name": "Crostini",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         }
       ],
@@ -2086,22 +1991,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "34",
+      "id": 34,
       "name": "Fette biscottate con ricotta e marmellata",
       "ingredients": [
         {
           "name": "Fette biscottate integrali",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Ricotta light",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Marmellata",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         }
       ],
@@ -2115,17 +2020,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "35",
+      "id": 35,
       "name": "Frutta e cioccolato",
       "ingredients": [
         {
           "name": "Cioccolato fondente",
-          "quantity": "15",
+          "quantity": 15,
           "unit": "gr"
         },
         {
           "name": "Frutta",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         }
       ],
@@ -2153,17 +2058,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "36",
+      "id": 36,
       "name": "Grissini e grana",
       "ingredients": [
         {
           "name": "Grissini",
-          "quantity": "15",
+          "quantity": 15,
           "unit": "gr"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "20",
+          "quantity": 20,
           "unit": "gr"
         }
       ],
@@ -2177,27 +2082,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "37",
+      "id": 37,
       "name": "Pasta al pomodoro con formaggio e verdure",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Formaggio semistagionato",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2216,27 +2121,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "38",
+      "id": 38,
       "name": "Pasta ai broccoli",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "60",
+          "quantity": 60,
           "unit": "gr"
         },
         {
           "name": "Broccoli",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Formaggio grattuggiato",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza porzione"
         }
       ],
@@ -2255,22 +2160,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "39",
+      "id": 39,
       "name": "Pesce con pane e verdura",
       "ingredients": [
         {
           "name": "Pesce",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2289,27 +2194,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "40",
+      "id": 40,
       "name": "Pesce con pane e crackers e verdura",
       "ingredients": [
         {
           "name": "Pesce",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Crackers",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pacchetto"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2328,22 +2233,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "41",
+      "id": 41,
       "name": "Pesce con polenta e verdura",
       "ingredients": [
         {
           "name": "Pesce",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2362,17 +2267,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "42",
+      "id": 42,
       "name": "Merluzzo in umido",
       "ingredients": [
         {
           "name": "Merluzzo",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "ml"
         }
       ],
@@ -2391,27 +2296,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "43",
+      "id": 43,
       "name": "Piadina con frittata",
       "ingredients": [
         {
           "name": "Piadina integrale",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Philadelphia light",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         },
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2430,37 +2335,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "44",
+      "id": 44,
       "name": "Latte/caffe con Pane tostato con ricotta e frutta",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Ricotta light",
-          "quantity": "60",
+          "quantity": 60,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Gocce di cioccolato",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Latte",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         }
       ],
@@ -2479,27 +2384,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "45",
+      "id": 45,
       "name": "Latte/caffe con Pane tostato con marmellata",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "60",
+          "quantity": 60,
           "unit": "gr"
         },
         {
           "name": "Marmellata",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Latte",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         }
       ],
@@ -2513,27 +2418,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "46",
+      "id": 46,
       "name": "Latte/Caffè con Fette biscottate e marmellata",
       "ingredients": [
         {
           "name": "Latte",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Fette biscottate integrali",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Marmellata",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         }
       ],
@@ -2550,22 +2455,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "47",
+      "id": 47,
       "name": "Latte con Fette biscottate e marmellata",
       "ingredients": [
         {
           "name": "Latte",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Fette biscottate integrali",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "pz"
         },
         {
           "name": "Marmellata",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         }
       ],
@@ -2579,22 +2484,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "48",
+      "id": 48,
       "name": "Yogurt con Fette biscottate e marmellata",
       "ingredients": [
         {
           "name": "Yogurt bianco non zuccherato",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "gr"
         },
         {
           "name": "Fette biscottate integrali",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "z"
         },
         {
           "name": "Marmellata",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         }
       ],
@@ -2608,37 +2513,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "49",
+      "id": 49,
       "name": "Latte/caffe con Pane, ricotta e miele",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Ricotta light",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Miele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         },
         {
           "name": "Granella di nocciole",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         },
         {
           "name": "Latte",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "ml"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         }
       ],
@@ -2657,27 +2562,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "50",
+      "id": 50,
       "name": "Pasta con cappuccio e ceci",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Cappuccio",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Ceci",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Paprika",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         }
       ],
@@ -2696,22 +2601,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "51",
+      "id": 51,
       "name": "Pasta con radicchio e lenticchie",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Radicchio",
-          "quantity": "80",
+          "quantity": 80,
           "unit": "gr"
         },
         {
           "name": "Lenticchie",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         }
       ],
@@ -2730,22 +2635,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "52",
+      "id": 52,
       "name": "Pasta con radicchio e fagioli",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Radicchio",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Fagioli cannellini",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         }
       ],
@@ -2764,22 +2669,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "53",
+      "id": 53,
       "name": "Pasta con broccoli e lenticchie",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Broccoli",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Lenticchie",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         }
       ],
@@ -2798,27 +2703,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "54",
+      "id": 54,
       "name": "Riso con funghi e piselli",
       "ingredients": [
         {
           "name": "Riso",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Piselli",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Funghi champignon",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Aglio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "spicchio"
         }
       ],
@@ -2837,27 +2742,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "55",
+      "id": 55,
       "name": "Pasta sugo pomodoro e piselli",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "ml"
         },
         {
           "name": "Piselli",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2876,32 +2781,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "56",
+      "id": 56,
       "name": "Pasta al rag├╣ di lenticchie",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Lenticchie",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Soffritto",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2920,17 +2825,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "57",
+      "id": 57,
       "name": "Toast con fesa di tacchino",
       "ingredients": [
         {
           "name": "Pancarr├¿",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         },
         {
           "name": "Fesa di tacchino",
-          "quantity": "20",
+          "quantity": 20,
           "unit": "gr"
         }
       ],
@@ -2947,22 +2852,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "58",
+      "id": 58,
       "name": "Uova con pane e verdura",
       "ingredients": [
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -2976,27 +2881,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "59",
+      "id": 59,
       "name": "Uova con pane, verdura e formaggio",
       "ingredients": [
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3010,22 +2915,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "60",
+      "id": 60,
       "name": "Uova con polenta e verdura",
       "ingredients": [
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3039,27 +2944,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "61",
+      "id": 61,
       "name": "Uova con polenta, verdura e formaggio",
       "ingredients": [
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         }
       ],
@@ -3073,27 +2978,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "62",
+      "id": 62,
       "name": "Uova con pane, crackers e verdura",
       "ingredients": [
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Crackers",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pacchetto"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3107,32 +3012,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "63",
+      "id": 63,
       "name": "Uova con pane, crackers, verdura e formaggio",
       "ingredients": [
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Crackers",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pacchetto"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         }
       ],
@@ -3146,23 +3051,23 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "64",
+      "id": 64,
       "name": "Frittata porri",
       "ingredients": [
         {
           "name": "Uova",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "pz"
         },
         {
           "name": "Porri",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Latte",
-          "quantity": "",
-          "unit": "1 cucchiaino"
+          "unit": "1 cucchiaino",
+          "quantity": null
         }
       ],
       "schedule": {
@@ -3180,42 +3085,42 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "65",
+      "id": 65,
       "name": "Yogurt con pancake pere e cioccolato",
       "ingredients": [
         {
           "name": "Farina dÔÇÖavena",
-          "quantity": "30",
+          "quantity": 30,
           "unit": "gr"
         },
         {
           "name": "Uova",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Latte",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "ml"
         },
         {
           "name": "Pere",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         },
         {
           "name": "Gocce di cioccolato",
-          "quantity": "10",
+          "quantity": 10,
           "unit": "gr"
         },
         {
           "name": "Lievito",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza bustina"
         },
         {
           "name": "Yogurt bianco non zuccherato",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "gr"
         }
       ],
@@ -3234,22 +3139,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "66",
+      "id": 66,
       "name": "Pasta al tonno",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Tonno",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "scatoletta"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3268,22 +3173,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "67",
+      "id": 67,
       "name": "Pasta al salmone",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Salmone affumicato",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3302,27 +3207,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "68",
+      "id": 68,
       "name": "Pasta zucchine e gamberetti",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Gamberetti",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Zucchine",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3341,12 +3246,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "69",
+      "id": 69,
       "name": "Crackers",
       "ingredients": [
         {
           "name": "Crackers",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pacchetto"
         }
       ],
@@ -3365,22 +3270,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "70",
+      "id": 70,
       "name": "Carne rossa con patate e verdura",
       "ingredients": [
         {
           "name": "Carne rossa",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3399,27 +3304,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "71",
+      "id": 71,
       "name": "Carne rossa con patate, pane e verdura",
       "ingredients": [
         {
           "name": "Carne rossa",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Patate",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3438,22 +3343,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "72",
+      "id": 72,
       "name": "Carne rossa con pane e verdura",
       "ingredients": [
         {
           "name": "Carne rossa",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3472,22 +3377,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "73",
+      "id": 73,
       "name": "Carne rossa con polenta e verdura",
       "ingredients": [
         {
           "name": "Carne rossa",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3506,27 +3411,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "74",
+      "id": 74,
       "name": "Latte/caffe con Pane e marmellata",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Marmellata",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         },
         {
           "name": "Latte",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         }
       ],
@@ -3545,22 +3450,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "75",
+      "id": 75,
       "name": "Pane tostato con philadelphia e avocado",
       "ingredients": [
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Philadelphia light",
-          "quantity": "20",
+          "quantity": 20,
           "unit": "gr"
         },
         {
           "name": "Avocado",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         }
       ],
@@ -3579,32 +3484,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "76",
+      "id": 76,
       "name": "Pasta con insalata di cappuccio, mele e lenticchie",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Cappuccio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Lenticchie",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         }
       ],
@@ -3618,37 +3523,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "77",
+      "id": 77,
       "name": "Pasta con insalata di cappuccio, mele e lenticchie",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "20",
+          "quantity": 20,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Cappuccio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Lenticchie",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         }
       ],
@@ -3662,37 +3567,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "78",
+      "id": 78,
       "name": "Pasta con insalata di radicchio, noci, mele e lenticchie",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Radicchio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Lenticchie",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         },
         {
           "name": "Noci",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaio"
         }
       ],
@@ -3706,42 +3611,42 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "79",
+      "id": 79,
       "name": "Pasta con insalata di radicchio, noci, mele e lenticchie",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "20",
+          "quantity": 20,
           "unit": "gr"
         },
         {
           "name": "Radicchio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Lenticchie",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         },
         {
           "name": "Noci",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaio"
         }
       ],
@@ -3755,12 +3660,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "80",
+      "id": 80,
       "name": "Cioccolata calda",
       "ingredients": [
         {
           "name": "Cioccolata calda",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3785,12 +3690,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "81",
+      "id": 81,
       "name": "Pizza",
       "ingredients": [
         {
           "name": "Pizza",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         }
       ],
@@ -3809,12 +3714,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "82",
+      "id": 82,
       "name": "Cena sgarro",
       "ingredients": [
         {
           "name": "Sgarro",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3833,27 +3738,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "83",
+      "id": 83,
       "name": "Caffè con pane, burro e marmellata",
       "ingredients": [
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         },
         {
           "name": "Pane",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Burro",
-          "quantity": "15",
+          "quantity": 15,
           "unit": "gr"
         },
         {
           "name": "Marmellata",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiaini"
         }
       ],
@@ -3872,22 +3777,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "84",
+      "id": 84,
       "name": "Pasta, carne bianca e verdura",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Carne bianca",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -3906,47 +3811,47 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "85",
+      "id": 85,
       "name": "Simil lasagna",
       "ingredients": [
         {
           "name": "Lasagne",
-          "quantity": "65",
+          "quantity": 65,
           "unit": "gr"
         },
         {
           "name": "Pollo",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Soffritto",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         },
         {
           "name": "Latte",
-          "quantity": "125",
+          "quantity": 125,
           "unit": "ml"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Farina",
-          "quantity": "7",
+          "quantity": 7,
           "unit": "gr"
         },
         {
           "name": "Burro",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "gr"
         },
         {
           "name": "Noce moscata",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "spolverata"
         }
       ],
@@ -3965,17 +3870,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "86",
+      "id": 86,
       "name": "Vellutata legumi con pastina",
       "ingredients": [
         {
           "name": "Legumi",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pastina",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         }
       ],
@@ -3992,22 +3897,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "87",
+      "id": 87,
       "name": "Vellutata legumi con pastina",
       "ingredients": [
         {
           "name": "Legumi",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pastina",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiai"
         }
       ],
@@ -4024,17 +3929,17 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "88",
+      "id": 88,
       "name": "Vellutata legumi con crostini",
       "ingredients": [
         {
           "name": "Legumi",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Crostini",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         }
       ],
@@ -4048,22 +3953,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "89",
+      "id": 89,
       "name": "Vellutata legumi con crostini",
       "ingredients": [
         {
           "name": "Legumi",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Crostini",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Formaggio Grana",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "cucchiai"
         }
       ],
@@ -4077,12 +3982,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "90",
+      "id": 90,
       "name": "Si/No Fiorentini",
       "ingredients": [
         {
           "name": "Triangolini mais Si e No",
-          "quantity": "20",
+          "quantity": 20,
           "unit": "gr"
         }
       ],
@@ -4101,12 +4006,12 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "91",
+      "id": 91,
       "name": "Uvetta",
       "ingredients": [
         {
           "name": "Uvetta",
-          "quantity": "15",
+          "quantity": 15,
           "unit": "gr"
         }
       ],
@@ -4138,22 +4043,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "92",
+      "id": 92,
       "name": "Risotto coi funghi",
       "ingredients": [
         {
           "name": "Riso",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Funghi",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4196,22 +4101,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "93",
+      "id": 93,
       "name": "Risotto alla zucca",
       "ingredients": [
         {
           "name": "Riso",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Zucca",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4254,22 +4159,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "94",
+      "id": 94,
       "name": "Pasta al pesto di zucchine",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Basilico",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "gr"
         },
         {
           "name": "Pinoli",
-          "quantity": "3",
+          "quantity": 3,
           "unit": "gr"
         }
       ],
@@ -4312,22 +4217,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "95",
+      "id": 95,
       "name": "Risotto allo zafferano",
       "ingredients": [
         {
           "name": "Riso",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Zafferano",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "bustina"
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "l"
         }
       ],
@@ -4370,27 +4275,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "96",
+      "id": 96,
       "name": "Pasta al rag├╣ di corte",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "l"
         },
         {
           "name": "Macinato di pollo",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4409,37 +4314,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "97",
+      "id": 97,
       "name": "Vitello alla pizzaiola con patate e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Aglio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "spicchio"
         },
         {
           "name": "Origano",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "cucchiaino"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4458,42 +4363,42 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "98",
+      "id": 98,
       "name": "Vitello alla pizzaiola con patate, pane e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Aglio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "spicchio"
         },
         {
           "name": "Origano",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "cucchiaino"
         },
         {
           "name": "Patate",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4512,37 +4417,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "99",
+      "id": 99,
       "name": "Vitello alla pizzaiola con pane e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Aglio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "spicchio"
         },
         {
           "name": "Origano",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "cucchiaino"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4561,37 +4466,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "100",
+      "id": 100,
       "name": "Vitello alla pizzaiola con polenta e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Passata di pomodoro",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Aglio",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "spicchio"
         },
         {
           "name": "Origano",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "cucchiaino"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4610,22 +4515,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "101",
+      "id": 101,
       "name": "Spaghetti con crema di cavolfiore e noci",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Cavolfiore",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Noci",
-          "quantity": "7",
+          "quantity": 7,
           "unit": "gr"
         }
       ],
@@ -4668,22 +4573,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "102",
+      "id": 102,
       "name": "Risotto al cavolo viola IG",
       "ingredients": [
         {
           "name": "Riso",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Cavolo viola",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "l"
         }
       ],
@@ -4726,27 +4631,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "103",
+      "id": 103,
       "name": "Vellutata di carote",
       "ingredients": [
         {
           "name": "Carote",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Cipolla",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Zenzero",
-          "quantity": "2",
+          "quantity": 2,
           "unit": "gr"
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "ml"
         }
       ],
@@ -4771,27 +4676,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "104",
+      "id": 104,
       "name": "Vellutata di cavolfiore e porri",
       "ingredients": [
         {
           "name": "Cavolfiore",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Porri",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "ml"
         },
         {
           "name": "Noce moscata",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "grattata"
         }
       ],
@@ -4816,32 +4721,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "105",
+      "id": 105,
       "name": "Spiedini di pollo con patate e verdura",
       "ingredients": [
         {
           "name": "Carne bianca",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Peperoni",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Cipolla",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "met├á"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4860,32 +4765,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "106",
+      "id": 106,
       "name": "Spiedini di pollo con pane e verdura",
       "ingredients": [
         {
           "name": "Carne bianca",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Peperoni",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Cipolla",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "met├á"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4910,32 +4815,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "107",
+      "id": 107,
       "name": "Spiedini di pollo con polenta e verdura",
       "ingredients": [
         {
           "name": "Carne bianca",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Peperoni",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Cipolla",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "met├á"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4954,32 +4859,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "108",
+      "id": 108,
       "name": "Pollo alla curcuma e zucca con patate e verdura",
       "ingredients": [
         {
           "name": "Pollo",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Zucca",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Curcuma",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "cucchiaino"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -4998,32 +4903,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "109",
+      "id": 109,
       "name": "Pollo alla curcuma e zucca con pane e verdura",
       "ingredients": [
         {
           "name": "Pollo",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Zucca",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Curcuma",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "cucchiaino"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5048,32 +4953,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "110",
+      "id": 110,
       "name": "Pollo alla curcuma e zucca con polenta e verdura",
       "ingredients": [
         {
           "name": "Pollo",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Zucca",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Curcuma",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "cucchiaino"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5092,27 +4997,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "111",
+      "id": 111,
       "name": "Involtini di vitello e melanzane con patate e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Melanzane",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5131,32 +5036,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "112",
+      "id": 112,
       "name": "Involtini di vitello e melanzane con patate, pane e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Melanzane",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         },
         {
           "name": "Patate",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5175,27 +5080,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "113",
+      "id": 113,
       "name": "Involtini di vitello e melanzane con pane e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Melanzane",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5214,27 +5119,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "114",
+      "id": 114,
       "name": "Involtini di vitello e melanzane con polenta e verdura",
       "ingredients": [
         {
           "name": "Vitello",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Melanzane",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "mezza"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5253,27 +5158,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "115",
+      "id": 115,
       "name": "Hamburger con pane e verdura",
       "ingredients": [
         {
           "name": "Macinato manzo/maiale",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Pane da hamburger",
-          "quantity": "120",
+          "quantity": 120,
           "unit": "gr"
         },
         {
           "name": "Maionese",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "bustina"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5292,27 +5197,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "116",
+      "id": 116,
       "name": "Hamburger con patate e verdura",
       "ingredients": [
         {
           "name": "Macinato manzo/maiale",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Maionese",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "bustina"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5331,27 +5236,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "117",
+      "id": 117,
       "name": "Hamburger con polenta e verdura",
       "ingredients": [
         {
           "name": "Macinato manzo/maiale",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Maionese",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "bustina"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5370,32 +5275,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "118",
+      "id": 118,
       "name": "Lonza alle mele con patate e verdura",
       "ingredients": [
         {
           "name": "Lonza maiale",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "",
-          "unit": "mezza"
+          "unit": "mezza",
+          "quantity": null
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "ml"
         },
         {
           "name": "Patate",
-          "quantity": "250",
+          "quantity": 250,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5414,37 +5319,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "119",
+      "id": 119,
       "name": "Lonza alle mele con patate, pane e verdura",
       "ingredients": [
         {
           "name": "Lonza maiale",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "",
-          "unit": "mezza"
+          "unit": "mezza",
+          "quantity": null
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "ml"
         },
         {
           "name": "Patate",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5463,32 +5368,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "120",
+      "id": 120,
       "name": "Lonza alle mele con pane e verdura",
       "ingredients": [
         {
           "name": "Lonza maiale",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "",
-          "unit": "mezza"
+          "unit": "mezza",
+          "quantity": null
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "ml"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5507,32 +5412,32 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "121",
+      "id": 121,
       "name": "Lonza alle mele con polenta e verdura",
       "ingredients": [
         {
           "name": "Lonza maiale",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Mele",
-          "quantity": "",
-          "unit": "mezza"
+          "unit": "mezza",
+          "quantity": null
         },
         {
           "name": "Brodo vegetale",
-          "quantity": "40",
+          "quantity": 40,
           "unit": "ml"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5551,27 +5456,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "122",
+      "id": 122,
       "name": "Riso con ceci alla paprika e cavolfiore",
       "ingredients": [
         {
           "name": "Riso",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Ceci",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Cavolfiore",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "ml"
         },
         {
           "name": "Paprika",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         }
       ],
@@ -5590,37 +5495,37 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "123",
+      "id": 123,
       "name": "Simil cheesecake",
       "ingredients": [
         {
           "name": "Yogurt greco 0% bianco",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Oro Saiwa",
-          "quantity": "25",
+          "quantity": 25,
           "unit": "gr"
         },
         {
           "name": "Riso soffiato",
-          "quantity": "10",
+          "quantity": 10,
           "unit": "gr"
         },
         {
           "name": "Cioccolato fondente",
-          "quantity": "15",
+          "quantity": 15,
           "unit": "gr"
         },
         {
           "name": "Miele",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "cucchiaino"
         },
         {
           "name": "Caffè",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "tazzina"
         }
       ],
@@ -5639,22 +5544,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "124",
+      "id": 124,
       "name": "Pasta con verdura e legumi",
       "ingredients": [
         {
           "name": "Pasta integrale",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Legumi",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5673,22 +5578,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "125",
+      "id": 125,
       "name": "Salmone con pane e verdura",
       "ingredients": [
         {
           "name": "Salmone",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Pane",
-          "quantity": "100",
+          "quantity": 100,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5707,22 +5612,22 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "126",
+      "id": 126,
       "name": "Salmone con polenta e verdura",
       "ingredients": [
         {
           "name": "Salmone",
-          "quantity": "200",
+          "quantity": 200,
           "unit": "gr"
         },
         {
           "name": "Polenta",
-          "quantity": "4",
+          "quantity": 4,
           "unit": "fette"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5741,27 +5646,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "127",
+      "id": 127,
       "name": "Riso venere con gamberetti e zucchine",
       "ingredients": [
         {
           "name": "Riso Venere",
-          "quantity": "90",
+          "quantity": 90,
           "unit": "gr"
         },
         {
           "name": "Gamberetti",
-          "quantity": "120",
+          "quantity": 120,
           "unit": "gr"
         },
         {
           "name": "Zucchine",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "pz"
         },
         {
           "name": "Arance",
-          "quantity": "0.5",
+          "quantity": 0.5,
           "unit": "pz"
         }
       ],
@@ -5780,27 +5685,27 @@ export const db = {
       "instructions": ""
     },
     {
-      "id": "128",
+      "id": 128,
       "name": "Focaccine burger IG",
       "ingredients": [
         {
           "name": "Macinato manzo/maiale",
-          "quantity": "150",
+          "quantity": 150,
           "unit": "gr"
         },
         {
           "name": "Philadelphia light",
-          "quantity": "50",
+          "quantity": 50,
           "unit": "gr"
         },
         {
           "name": "Base per pizza",
-          "quantity": "230",
+          "quantity": 230,
           "unit": "gr"
         },
         {
           "name": "Verdura",
-          "quantity": "1",
+          "quantity": 1,
           "unit": "porzione"
         }
       ],
@@ -5823,7 +5728,515 @@ export const db = {
         }
       },
       "instructions": ""
+    },
+    {
+      "ingredients": [],
+      "schedule": {
+        "1": {
+          "sat": [
+            "afternoon_snack"
+          ],
+          "sun": [
+            "afternoon_snack"
+          ]
+        },
+        "2": {
+          "sat": [
+            "afternoon_snack"
+          ],
+          "sun": [
+            "afternoon_snack"
+          ]
+        }
+      },
+      "instructions": "",
+      "name": "Gelato",
+      "id": 129
+    },
+    {
+      "ingredients": [
+        {
+          "name": "Uova",
+          "quantity": 1,
+          "unit": "pz"
+        },
+        {
+          "name": "Tonno",
+          "quantity": 1,
+          "unit": "pz"
+        },
+        {
+          "name": "Preparato insalata di riso",
+          "quantity": 0.5,
+          "unit": "pz"
+        },
+        {
+          "name": "Wurstel",
+          "quantity": 0.5,
+          "unit": ""
+        },
+        {
+          "name": "Formaggio semistagionato",
+          "unit": "",
+          "quantity": null
+        }
+      ],
+      "schedule": {},
+      "instructions": "",
+      "name": "Insalata di riso",
+      "id": 130
+    },
+    {
+      "ingredients": [
+        {
+          "name": "Uova",
+          "quantity": 1,
+          "unit": "pz"
+        },
+        {
+          "name": "Tonno",
+          "quantity": 1,
+          "unit": "pz"
+        },
+        {
+          "name": "Preparato insalata di riso",
+          "quantity": 0.5,
+          "unit": "pz"
+        },
+        {
+          "name": "Wurstel",
+          "quantity": 0.5,
+          "unit": "pz"
+        },
+        {
+          "name": "Riso",
+          "quantity": 90,
+          "unit": "g"
+        },
+        {
+          "name": "Formaggio semistagionato",
+          "quantity": 40,
+          "unit": ""
+        }
+      ],
+      "schedule": {
+        "1": {
+          "mon": [
+            "lunch"
+          ],
+          "tue": [
+            "lunch"
+          ],
+          "wed": [
+            "lunch"
+          ],
+          "thu": [
+            "lunch"
+          ],
+          "fri": [
+            "lunch"
+          ],
+          "sat": [
+            "lunch"
+          ],
+          "sun": [
+            "lunch"
+          ]
+        },
+        "2": {
+          "wed": [
+            "lunch"
+          ],
+          "mon": [
+            "lunch"
+          ],
+          "tue": [
+            "lunch"
+          ],
+          "thu": [
+            "lunch"
+          ],
+          "sat": [
+            "lunch"
+          ],
+          "fri": [
+            "lunch"
+          ],
+          "sun": [
+            "lunch"
+          ]
+        }
+      },
+      "instructions": "",
+      "name": "Insalata di riso",
+      "id": 131
     }
   ],
-  "meal-plans": []
+  "meal-plans": [
+    {
+      "weekStart": "2026-05-25",
+      "slots": {
+        "1": {
+          "mon": {
+            "breakfast": {
+              "recipeId": 5,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 2,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 13,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 22,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 26,
+              "note": ""
+            }
+          }
+        },
+        "2": {
+          "mon": {
+            "breakfast": {
+              "recipeId": 4,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 14,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 23,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 26,
+              "note": ""
+            }
+          }
+        }
+      },
+      "id": 0
+    },
+    {
+      "weekStart": "2026-06-01",
+      "slots": {
+        "1": {
+          "mon": {
+            "breakfast": {
+              "recipeId": 5,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 10,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 2,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 26,
+              "note": ""
+            }
+          },
+          "tue": {
+            "breakfast": {
+              "recipeId": 5,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 93,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 22,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 40,
+              "note": ""
+            }
+          },
+          "wed": {
+            "breakfast": {
+              "recipeId": 45,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "note": "Mensa"
+            },
+            "afternoon_snack": {
+              "recipeId": 90,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 27,
+              "note": "Sottocosce congelatore"
+            }
+          },
+          "thu": {
+            "breakfast": {
+              "recipeId": 49,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "note": "Mensa"
+            },
+            "afternoon_snack": {
+              "recipeId": 19,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 63,
+              "note": ""
+            }
+          },
+          "fri": {
+            "breakfast": {
+              "recipeId": 65,
+              "note": "Muffin"
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 66,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 69,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 72,
+              "note": ""
+            }
+          },
+          "sat": {
+            "breakfast": {
+              "recipeId": 74,
+              "note": ""
+            },
+            "morning_snack": {
+              "note": ""
+            },
+            "lunch": {
+              "note": "Insalata di riso"
+            },
+            "afternoon_snack": {
+              "recipeId": 0,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 81,
+              "note": ""
+            }
+          },
+          "sun": {
+            "breakfast": {
+              "recipeId": 30,
+              "note": "Biscotti burro d'arachidi"
+            },
+            "morning_snack": {
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 85,
+              "note": "Al pesto"
+            },
+            "afternoon_snack": {
+              "recipeId": 0,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 103,
+              "note": ""
+            }
+          }
+        },
+        "2": {
+          "mon": {
+            "breakfast": {
+              "recipeId": 4,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 2,
+              "note": ""
+            },
+            "lunch": {
+              "note": "Mensa"
+            },
+            "afternoon_snack": {
+              "recipeId": 19,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 26,
+              "note": ""
+            }
+          },
+          "tue": {
+            "breakfast": {
+              "recipeId": 29,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 91,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 93,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 35,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 40,
+              "note": ""
+            }
+          },
+          "wed": {
+            "breakfast": {
+              "recipeId": 46,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 12,
+              "note": "Con pomodorini"
+            },
+            "afternoon_snack": {
+              "recipeId": 90,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 27,
+              "note": "Sottocosce congelatore"
+            }
+          },
+          "thu": {
+            "breakfast": {
+              "recipeId": 4,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 91,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 54,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 23,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 58,
+              "note": ""
+            }
+          },
+          "fri": {
+            "breakfast": {
+              "recipeId": 65,
+              "note": "Muffin"
+            },
+            "morning_snack": {
+              "recipeId": 3,
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 66,
+              "note": ""
+            },
+            "afternoon_snack": {
+              "recipeId": 69,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 72,
+              "note": ""
+            }
+          },
+          "sat": {
+            "breakfast": {
+              "recipeId": 74,
+              "note": ""
+            },
+            "morning_snack": {
+              "recipeId": 2,
+              "note": ""
+            },
+            "lunch": {
+              "note": "Insalata di riso"
+            },
+            "afternoon_snack": {
+              "recipeId": 0,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 81,
+              "note": ""
+            }
+          },
+          "sun": {
+            "breakfast": {
+              "recipeId": 29,
+              "note": "Biscotti burro d'arachidi"
+            },
+            "morning_snack": {
+              "note": ""
+            },
+            "lunch": {
+              "recipeId": 85,
+              "note": "Al pesto"
+            },
+            "afternoon_snack": {
+              "recipeId": 0,
+              "note": ""
+            },
+            "dinner": {
+              "recipeId": 103,
+              "note": ""
+            }
+          }
+        }
+      },
+      "id": 1,
+      "shoppingListChecked": []
+    }
+  ]
 };
