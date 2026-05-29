@@ -27,7 +27,7 @@ import {
 } from "@/resources/meal-plans";
 
 const instanceUrl = import.meta.env.VITE_SUPABASE_URL as string;
-const apiKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+const apiKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY as string;
 const supabaseClient = createClient(instanceUrl, apiKey);
 
 const baseProvider = supabaseDataProvider({ instanceUrl, apiKey, supabaseClient });
