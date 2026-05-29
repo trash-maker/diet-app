@@ -19,7 +19,7 @@ import {
 } from "@mdxeditor/editor";
 import { FieldTitle, useCreate, useGetList, useInput, useRecordContext, useRedirect, useResourceContext } from "ra-core";
 import type { InputProps } from "ra-core";
-import { Copy, Plus, X } from "lucide-react";
+import { Copy, ExternalLink, Plus, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import {
     Create,
@@ -629,9 +629,27 @@ const CloneRecipeButton = () => {
 // CRUD components
 // ---------------------------------------------------------------------------
 
+const LinkField = () => {
+    const record = useRecordContext();
+    const url = record?.link as string | undefined;
+    if (!url) return null;
+    return (
+        <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 text-sm text-primary hover:underline"
+        >
+            <ExternalLink className="h-3.5 w-3.5" />
+            {url}
+        </a>
+    );
+};
+
 const RecipeForm = () => (
     <SimpleForm>
         <TextInput source="name" required />
+        <TextInput source="link" />
         <IngredientsInput source="ingredients" />
         <ScheduleInput source="schedule" />
         <MarkdownInput source="instructions" />
@@ -661,6 +679,7 @@ export const RecipeShow = () => (
     <Show>
         <SimpleShowLayout>
             <TextField source="name" />
+            <LinkField />
             <IngredientsField />
             <ScheduleField />
             <MarkdownField source="instructions" />

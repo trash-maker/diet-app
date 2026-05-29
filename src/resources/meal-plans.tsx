@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { ArrowLeft, ChevronLeft, ChevronRight, Eye, EyeOff, Printer, ShoppingCart } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, Eye, EyeOff, Printer, ShoppingCart } from "lucide-react";
 
 // ---------------------------------------------------------------------------
 // Constants
@@ -563,7 +563,13 @@ const SlotsField = () => {
     const [userPage, setUserPage] = useState(0);
 
     const recipeMap = useMemo(
-        () => Object.fromEntries(recipes.map((r) => [String(r.id), r.name as string])),
+        () =>
+            Object.fromEntries(
+                recipes.map((r) => [
+                    String(r.id),
+                    { name: r.name as string, link: r.link as string | undefined },
+                ]),
+            ),
         [recipes],
     );
 
@@ -644,9 +650,9 @@ const SlotsField = () => {
                                 {pagedUsers.map((user) => {
                                     const userId = String(user.id);
                                     const sv = slots[userId]?.[selectedDay]?.[meal.id];
-                                    const recipeName = sv?.recipeId
-                                        ? (recipeMap[sv.recipeId] ?? sv.recipeId)
-                                        : null;
+                                    const recipeEntry = sv?.recipeId ? recipeMap[sv.recipeId] : null;
+                                    const recipeName = recipeEntry?.name ?? (sv?.recipeId ? sv.recipeId : null);
+                                    const recipeLink = recipeEntry?.link;
                                     return (
                                         <td
                                             key={userId}
@@ -654,7 +660,19 @@ const SlotsField = () => {
                                         >
                                             {recipeName ? (
                                                 <div className="space-y-0.5">
-                                                    <p className="font-medium">{recipeName}</p>
+                                                    {recipeLink ? (
+                                                        <a
+                                                            href={recipeLink}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="font-medium hover:underline flex items-center gap-1"
+                                                        >
+                                                            {recipeName}
+                                                            <ExternalLink className="h-3 w-3 shrink-0" />
+                                                        </a>
+                                                    ) : (
+                                                        <p className="font-medium">{recipeName}</p>
+                                                    )}
                                                     {sv?.note && (
                                                         <p className="text-xs text-muted-foreground">
                                                             {sv.note}
