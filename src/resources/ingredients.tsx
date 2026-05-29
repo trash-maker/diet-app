@@ -6,6 +6,7 @@ import {
     DataTable,
     Edit,
     List,
+    SearchInput,
     Show,
     SimpleForm,
     SimpleShowLayout,
@@ -143,8 +144,12 @@ const IngredientForm = () => (
 // List / Show / Edit / Create
 // ---------------------------------------------------------------------------
 
+const ingredientFilters = [
+    <SearchInput source="name_q" alwaysOn />,
+];
+
 export const IngredientList = () => (
-    <List>
+    <List filters={ingredientFilters}>
         <DataTable>
             <DataTable.Col source="name" />
             <DataTable.Col source="description" />

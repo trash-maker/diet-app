@@ -26,6 +26,7 @@ import {
     DataTable,
     Edit,
     List,
+    SearchInput,
     Show,
     SimpleForm,
     SimpleShowLayout,
@@ -637,8 +638,13 @@ const RecipeForm = () => (
     </SimpleForm>
 );
 
+const recipeFilters = [
+    <SearchInput source="name_q" alwaysOn placeholder="Cerca per nome…" />,
+    <SearchInput source="ingredient_name" alwaysOn placeholder="Cerca per ingrediente…" />,
+];
+
 export const RecipeList = () => (
-    <List>
+    <List filters={recipeFilters}>
         <DataTable>
             <DataTable.Col source="name" />
             <DataTable.Col source="ingredients">
