@@ -40,6 +40,24 @@ create table public."meal-plans" (
 );
 
 -- ------------------------------------------------------------
+-- GRANTS
+-- RLS controls row visibility, but the role must also have
+-- table-level privileges. Grant DML + sequence usage so that
+-- authenticated users can read, insert, update and delete.
+-- ------------------------------------------------------------
+
+grant select, insert, update, delete on public.users          to authenticated;
+grant select, insert, update, delete on public.ingredients    to authenticated;
+grant select, insert, update, delete on public.recipes        to authenticated;
+grant select, insert, update, delete on public."meal-plans"   to authenticated;
+
+-- Needed for identity (auto-increment) columns on INSERT
+grant usage, select on all sequences in schema public to authenticated;
+
+-- Uncomment if you also want anonymous (unauthenticated) read access:
+-- grant select on public.users, public.ingredients, public.recipes, public."meal-plans" to anon;
+
+-- ------------------------------------------------------------
 -- ROW LEVEL SECURITY
 -- Enable RLS on every table, then choose ONE of the two policy
 -- blocks below depending on whether you want authentication.
