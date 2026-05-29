@@ -36,8 +36,8 @@ const CategoryInput = (props: CategoryInputProps) => {
     const [open, setOpen] = useState(false);
     const [inputValue, setInputValue] = useState<string>(() => field.value ?? "");
 
-    // Sync con il valore del form (es. caricamento record in Edit)
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setInputValue(field.value ?? "");
     }, [field.value]);
 
