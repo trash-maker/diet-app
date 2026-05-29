@@ -1,7 +1,8 @@
 import { CustomRoutes, Resource } from "ra-core";
 import { UsersIcon, AppleIcon, UtensilsCrossedIcon, CalendarDaysIcon } from "lucide-react";
 import { Route } from "react-router";
-import localStorageDataProvider from "ra-data-local-storage";
+import { createClient } from "@supabase/supabase-js";
+import { supabaseDataProvider, supabaseAuthProvider } from "ra-supabase-core";
 import { Admin } from "@/components/admin";
 import { UserList, UserShow, UserEdit, UserCreate } from "@/resources/users";
 import {
@@ -25,7 +26,12 @@ import {
     PrintMealPlanPage,
 } from "@/resources/meal-plans";
 
-const baseProvider = localStorageDataProvider();
+const instanceUrl = import.meta.env.VITE_SUPABASE_URL as string;
+const apiKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+const supabaseClient = createClient(instanceUrl, apiKey);
+
+const baseProvider = supabaseDataProvider({ instanceUrl, apiKey, supabaseClient });
+const authProvider = supabaseAuthProvider(supabaseClient, {});
 
 const dataProvider = {
     ...baseProvider,
@@ -43,7 +49,7 @@ const dataProvider = {
                     regex.test(ing.name),
                 ),
             );
-            const { page, perPage } = params.pagination;
+            const { page = 1, perPage = 10 } = params.pagination ?? {};
             return {
                 data: filtered.slice((page - 1) * perPage, page * perPage),
                 total: filtered.length,
@@ -54,7 +60,7 @@ const dataProvider = {
 };
 
 const App = () => (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={dataProvider} authProvider={authProvider} requireAuth>
         <CustomRoutes>
             <Route path="/meal-plans/:id/shopping-list" element={<ShoppingListPage />} />
         </CustomRoutes>
