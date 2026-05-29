@@ -911,7 +911,7 @@ export const ShoppingListPage = () => {
         : "";
 
     return (
-        <div className="p-6 max-w-2xl mx-auto space-y-6">
+        <div className="py-4 space-y-6">
             {/* Header */}
             <div className="flex items-center gap-3">
                 <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
