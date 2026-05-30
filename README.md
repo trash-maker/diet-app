@@ -1,11 +1,13 @@
 # Diet App
 
-Client-side diet management admin built with React Admin + shadcn/ui. No backend — all data persists in browser localStorage.
+Client-side diet management admin built with React Admin + shadcn/ui, backed by Supabase.
+
+Live: https://trash-maker.github.io/diet-app/
 
 ## Stack
 
 - **Vite 8 / React 19 / TypeScript 6**
-- **React Admin** (`ra-core` 5.x) with `ra-data-local-storage`
+- **React Admin** (`ra-core` 5.x) with `ra-supabase-core`
 - **shadcn-admin-kit** — admin UI on top of shadcn/ui + Radix UI
 - **Tailwind CSS v4** (CSS-only config, no `tailwind.config.js`)
 - **React Router 7**, **TanStack Query 5**, **React Hook Form 7**
@@ -13,6 +15,7 @@ Client-side diet management admin built with React Admin + shadcn/ui. No backend
 ## Getting started
 
 ```bash
+cp .env.example .env.local   # fill in Supabase URL and publishable key
 npm install
 npm run dev      # http://localhost:5173
 npm run build    # production build
@@ -32,6 +35,7 @@ Each recipe has:
 - **Ingredients** — list with quantity and unit (g, kg, ml, l, pz, cucchiaio, cucchiaino, tazza, q.b.)
 - **Schedule** — per-user day × meal assignment grid (7 days × 5 meals: colazione, spuntino mattina, pranzo, merenda, cena)
 - **Instructions** — free-form markdown
+- **Link** — optional external URL shown as a clickable link on the detail page and in meal plan slots
 
 Recipe scheduling is user-specific: the schedule grid is scoped to a selected user, so different users can have the same recipe on different days and meals.
 
@@ -53,7 +57,7 @@ A **Lista della spesa** button on the show page opens a dedicated shopping list 
 ```
 users        { id, name, gender }
 ingredients  { id, name, category }
-recipes      { id, name, ingredients[], schedule, instructions }
+recipes      { id, name, ingredients[], schedule, instructions, link? }
 meal-plans   { id, weekStart, slots, shoppingListChecked? }
 ```
 
@@ -67,7 +71,7 @@ meal-plans   { id, weekStart, slots, shoppingListChecked? }
 
 ```
 src/
-  App.tsx                  # Admin + Resource declarations
+  App.tsx                  # Admin + Resource declarations + Supabase client
   resources/
     users.tsx
     ingredients.tsx
@@ -79,3 +83,7 @@ src/
     utils.ts
   index.css                # Tailwind v4 theme tokens (OKLch colors)
 ```
+
+## Deployment
+
+Deployed automatically to GitHub Pages on push to `main` via `.github/workflows/deploy.yml`. Supabase credentials are stored as repository secrets (`VITE_SUPABASE_URL`, `VITE_SUPABASE_PUBLISHABLE_KEY`).
