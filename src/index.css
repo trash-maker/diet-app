@@ -2,7 +2,6 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/plus-jakarta-sans";
-@import "@mdxeditor/editor/style.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -163,24 +162,4 @@
   html {
     @apply font-sans;
     }
-}
-
-/* ─── MDXEditor: restore list styles stripped by Tailwind's base reset ───── */
-/* These rules are unlayered so they win over @layer base.                    */
-.mdxeditor ul {
-    list-style-type: disc;
-    padding-inline-start: 1.5rem;
-}
-.mdxeditor ul ul {
-    list-style-type: circle;
-}
-.mdxeditor ul ul ul {
-    list-style-type: square;
-}
-.mdxeditor ol {
-    list-style-type: decimal;
-    padding-inline-start: 1.5rem;
-}
-.mdxeditor li {
-    margin-block: 0.2rem;
 }
