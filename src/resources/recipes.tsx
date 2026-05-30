@@ -593,7 +593,7 @@ const RecipeForm = () => (
 );
 
 const recipeFilters = [
-    <SearchInput source="name@ilike" alwaysOn placeholder="Cerca per nome…" parse={(v: string) => (v ? `*${v}*` : "")} />,
+    <SearchInput source="name@ilike" alwaysOn placeholder="Cerca per nome…" parse={(v: string) => (v ? `%${v}%` : "")} format={(v: string) => (v ? v.replace(/^%|%$/g, "") : "")} />,
     <SearchInput source="ingredient_name" alwaysOn placeholder="Cerca per ingrediente…" />,
 ];
 

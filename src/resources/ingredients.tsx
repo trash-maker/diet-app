@@ -145,7 +145,7 @@ const IngredientForm = () => (
 // ---------------------------------------------------------------------------
 
 const ingredientFilters = [
-    <SearchInput source="name@ilike" alwaysOn parse={(v: string) => (v ? `*${v}*` : "")} />,
+    <SearchInput source="name@ilike" alwaysOn parse={(v: string) => (v ? `%${v}%` : "")} format={(v: string) => (v ? v.replace(/^%|%$/g, "") : "")} />,
 ];
 
 export const IngredientList = () => (
