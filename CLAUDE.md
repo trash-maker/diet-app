@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Stack
 
 - **Vite 8 + React 19 + TypeScript 6**
-- **React Admin** (`ra-core` 5.x) — no backend, all data in localStorage
+- **React Admin** (`ra-core` 5.x) — data layer via Supabase (`ra-supabase-core`)
 - **shadcn-admin-kit** — admin UI components built on shadcn/ui + Radix UI
 - **Tailwind CSS v4** — configured via CSS only (`src/index.css`), no `tailwind.config.js`
 - **React Router 7**, **TanStack Query 5**, **React Hook Form 7**
@@ -18,13 +18,26 @@ npm run build     # tsc -b && vite build
 npm run lint      # ESLint
 ```
 
+## Environment variables
+
+```bash
+VITE_SUPABASE_URL=https://your-project-ref.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=your-publishable-key-here
+```
+
+Copy `.env.example` to `.env.local` and fill in the values.
+
 ## Architecture
 
-Pure client-side admin CRUD app — no backend. Data persists in localStorage via `ra-core`'s `localStorageStore()`.
+Client-side admin CRUD app backed by Supabase (PostgreSQL). Auth is handled by `supabaseAuthProvider` from `ra-supabase-core`; the `<Admin>` component is rendered with `requireAuth` so all routes require a logged-in user.
 
 The `<Admin>` component in `src/components/admin.tsx` wraps `ra-core`'s `CoreAdminContext`/`CoreAdminUI` and injects the custom Layout, LoginPage, ThemeProvider, and Ready components automatically. App.tsx just renders `<Admin>` and passes `dataProvider` + `Resource` children.
 
 All shadcn-admin-kit components live in `src/components/` as individual `.tsx` files. They are re-exported through a single barrel at `src/components/index.ts`. The shadcn/ui primitives live in `src/components/ui/`.
+
+## Deployment
+
+Deployed to GitHub Pages at `https://trash-maker.github.io/diet-app/` via `.github/workflows/deploy.yml` (triggers on push to `main`). Supabase env vars are stored as GitHub Actions secrets. A `public/404.html` + inline `index.html` script handles SPA deep-link routing on GitHub Pages.
 
 ## Import conventions
 
@@ -52,7 +65,7 @@ No config file — all theme tokens are defined in `src/index.css` via `@theme i
 
 ## Resources
 
-Four React Admin resources, all stored in localStorage:
+Four React Admin resources, all backed by Supabase tables:
 
 | Resource | File | Fields |
 |---|---|---|
